@@ -41,4 +41,5 @@ void element::normalAttack(int attacker)
     if (players[t].hp != before)
         players[attacker].energy++;
     sleep(0.5);
+    printf(1);
 }
