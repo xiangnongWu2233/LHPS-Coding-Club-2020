@@ -3,6 +3,7 @@
 #include <cstring>
 #include <unistd.h>
 #include <ctime>
+#include <cmath>
 #include "game.h"
 using namespace std;
 
@@ -113,12 +114,14 @@ void player::receiveDamage(int from, int damage)
     {
         printf("Killed %d %s!\n", id, name.c_str());
         sleep(1);
-        players[from].energy += players[from].level * 2 + round / 10;
+        players[from].gainEnergy(level * 2 + ceil(Round / 5));
     }
 }
 
 void player::gainEnergy(int amount)
 {
-    printf("%d %s + %d\n", id, name.c_str(), amount);
+    printf("%d %s energy + %d\n", id, name.c_str(), amount);
+    energy += amount;
+    sleep(1);
     upgrade();
 }

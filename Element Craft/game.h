@@ -39,5 +39,5 @@ public:
 
 player players[101];
 int n, dn = 0;
-int round = 0;
+int Round = 0;
 #endif // GAME_H

@@ -39,7 +39,6 @@ void element::normalAttack(int attacker)
     int before = players[t].hp;
     players[t].receiveDamage(attacker, damage);
     if (players[t].hp != before)
-        players[attacker].energy++;
+        players[attacker].gainEnergy(1);
     sleep(0.5);
-    printf(1);
 }

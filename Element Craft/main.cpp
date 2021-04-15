@@ -36,7 +36,7 @@ int main()
     sleep(1);
     while (dn < n - 1)
     {
-        round++;
+        Round++;
         for (int i = 1; i <= n; i++)
         {
             if (players[i].hp <= 0)
