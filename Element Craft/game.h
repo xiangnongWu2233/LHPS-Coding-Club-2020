@@ -11,7 +11,7 @@ public:
     int skillNum;
     element(int e);
     void normalAttack(int attacker);
-    //virtual void skill1();
+    virtual void skill1() {}
 };
 
 class player
@@ -32,7 +32,7 @@ public:
     void evolve();
 };
 
-class ice : element
+class ice : public element
 {
 public:
     ice();
