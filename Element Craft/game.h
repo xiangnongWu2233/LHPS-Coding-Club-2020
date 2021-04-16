@@ -11,6 +11,7 @@ public:
     int skillNum;
     element(int e);
     void normalAttack(int attacker);
+    //virtual void skill1();
 };
 
 class player
@@ -35,6 +36,7 @@ class ice : element
 {
 public:
     ice();
+    //void skill1();
 };
 
 player players[101];
