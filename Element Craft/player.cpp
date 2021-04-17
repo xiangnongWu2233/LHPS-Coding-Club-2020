@@ -120,8 +120,7 @@ void player::receiveDamage(int from, int damage)
 
 void player::gainEnergy(int amount)
 {
-    printf("%d %s energy + %d\n", id, name.c_str(), amount);
+    printf("%d %s gains %d energies!\n", id, name.c_str(), amount);
     energy += amount;
-    sleep(1);
     upgrade();
 }

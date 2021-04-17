@@ -36,7 +36,7 @@ class ice : public element
 {
 public:
     ice();
-    //void skill1();
+    virtual void skill1();
 };
 
 player players[101];
