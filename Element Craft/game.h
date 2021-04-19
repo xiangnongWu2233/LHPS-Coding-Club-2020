@@ -12,6 +12,7 @@ public:
     element(int e);
     void normalAttack(int attacker);
     virtual void skill1() {}
+    virtual void skill2() {}
 };
 
 class player
@@ -30,13 +31,6 @@ public:
     void gainEnergy(int amount);
     void mutate();
     void evolve();
-};
-
-class ice : public element
-{
-public:
-    ice();
-    virtual void skill1();
 };
 
 player players[101];

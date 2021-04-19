@@ -2,9 +2,28 @@
 #include <cstdio>
 #include <cstring>
 #include <unistd.h>
+
 #include "game.h"
-#include "player.cpp"
 #include "element.cpp"
+#include "player.cpp"
+
+#include "elementpack/element.h"
+
+#include "elementpack/Water/ice.cpp"
+#include "elementpack/Water/wind.cpp"
+
+#include "elementpack/Fire/bomb.cpp"
+#include "elementpack/Fire/thunder.cpp"
+
+#include "elementpack/Grass/earth.cpp"
+#include "elementpack/Grass/poison.cpp"
+
+#include "elementpack/Light/divine.cpp"
+#include "elementpack/Light/spirit.cpp"
+
+#include "elementpack/Dark/demon.cpp"
+#include "elementpack/Dark/ghost.cpp"
+
 using namespace std;
 
 int main()
