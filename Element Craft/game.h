@@ -8,7 +8,7 @@ class element
 {
 public:
     string name, skillNames[101];
-    int skillNum;
+    int skillNum, elementLevel;
     element(int e);
     void normalAttack(int attacker);
     virtual void skill1() {}

@@ -5,61 +5,61 @@
 #include <cstring>
 #include <cstdio>
 
-class ice : element
+class ice : public element
 {
 public:
     ice();
 };
 
-class wind : element
+class wind : public element
 {
 public:
     wind();
 };
 
-class thunder : element
+class thunder : public element
 {
 public:
     thunder();
 };
 
-class bomb : element
+class bomb : public element
 {
 public:
     bomb();
 };
 
-class earth : element
+class earth : public element
 {
 public:
     earth();
 };
 
-class poison : element
+class poison : public element
 {
 public:
     poison();
 };
 
-class divine : element
+class divine : public element
 {
 public:
     divine();
 };
 
-class spirit : element
+class spirit : public element
 {
 public:
     spirit();
 };
 
-class demon : element
+class demon : public element
 {
 public:
     demon();
 };
 
-class ghost : element
+class ghost : public element
 {
 public:
     ghost();

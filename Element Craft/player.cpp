@@ -1,10 +1,12 @@
 #include <iostream>
 #include <cstdio>
+#include <cstdlib>
 #include <cstring>
 #include <unistd.h>
 #include <ctime>
 #include <cmath>
 #include "game.h"
+#include "elementpack/element.h"
 using namespace std;
 
 player::~player()
@@ -60,8 +62,7 @@ void player::show()
 void player::turn()
 {
     printf("It's %d %s's turn to move! ", id, name.c_str());
-    if (ele->skillNum == 1)
-        ele->normalAttack(id);
+    ele->normalAttack(id);
 }
 
 void player::upgrade()
@@ -98,9 +99,11 @@ void player::upgrade()
             defense++;
         if (choice == 3)
             hpRestore++;
-        if (level >= 4 && level <= 8)
+        if (level >= 4 && level <= 8 && ele->elementLevel == 1)
         {
-            //mutate();
+            int coin = rand() % 100 + 1;
+            if (coin >= 50)
+                mutate();
         }
     }
 }
@@ -123,4 +126,96 @@ void player::gainEnergy(int amount)
     printf("%d %s gains %d energies!\n", id, name.c_str(), amount);
     energy += amount;
     upgrade();
+}
+
+void player::mutate()
+{
+    printf("Element mutated! ");
+    sleep(1);
+    printf("Choose your element: \n");
+    delete ele;
+    int choice;
+
+    if (ele->name == "Water")
+    {
+        printf("1. Ice     2. Wind\n");
+        cin >> choice;
+        while (choice != 1 && choice != 2)
+        {
+            printf("Enter a valid number!!!");
+            sleep(2);
+            cin >> choice;
+        }
+        if (choice == 1)
+            ele = new ice();
+        else
+            ele = new wind();
+    }
+
+    if (ele->name == "Fire")
+    {
+        printf("1. Bomb    2. Thunder\n");
+        cin >> choice;
+        while (choice != 1 && choice != 2)
+        {
+            printf("Enter a valid number!!!");
+            sleep(2);
+            cin >> choice;
+        }
+        if (choice == 1)
+            ele = new bomb();
+        else
+            ele = new thunder();
+    }
+
+    if (ele->name == "Grass")
+    {
+        printf("1. Earth   2. Poison\n");
+        cin >> choice;
+        while (choice != 1 && choice != 2)
+        {
+            printf("Enter a valid number!!!");
+            sleep(2);
+            cin >> choice;
+        }
+        if (choice == 1)
+            ele = new earth();
+        else
+            ele = new poison();
+    }
+
+    if (ele->name == "Light")
+    {
+        printf("1. Divine  2. Spirit\n");
+        cin >> choice;
+        while (choice != 1 && choice != 2)
+        {
+            printf("Enter a valid number!!!");
+            sleep(2);
+            cin >> choice;
+        }
+        if (choice == 1)
+            ele = new divine();
+        else
+            ele = new spirit();
+    }
+
+    if (ele->name == "Dark")
+    {
+        printf("1. Demon   2. Ghost\n");
+        cin >> choice;
+        while (choice != 1 && choice != 2)
+        {
+            printf("Enter a valid number!!!");
+            sleep(2);
+            cin >> choice;
+        }
+        if (choice == 1)
+            ele = new demon();
+        else
+            ele = new ghost();
+    }
+    ele->elementLevel = 2;
+    sleep(1);
+    printf("Element mutated: %s\n", ele->name.c_str());
 }

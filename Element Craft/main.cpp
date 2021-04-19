@@ -28,6 +28,8 @@ using namespace std;
 
 int main()
 {
+    srand(time(0));
+    system("clear");
     printf("Enter the number of players: ");
     cin >> n;
     cout << endl;

@@ -7,6 +7,7 @@ using namespace std;
 element::element(int e)
 {
     skillNum = 1;
+    elementLevel = 1;
     if (e == 1)
         name = "Water";
     if (e == 2)
