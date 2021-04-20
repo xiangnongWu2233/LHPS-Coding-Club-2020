@@ -4,7 +4,7 @@
 #include "../element.h"
 using namespace std;
 
-spirit::spirit() : element(4)
+spirit::spirit() : element("4")
 {
     name = "Spirit";
     skillNum = 3;

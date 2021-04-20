@@ -1,22 +1,23 @@
 #include <iostream>
 #include <cstdio>
+#include <cstdlib>
 #include <unistd.h>
 #include "game.h"
 using namespace std;
 
-element::element(int e)
+element::element(string e)
 {
     skillNum = 1;
     elementLevel = 1;
-    if (e == 1)
+    if (e == "1")
         name = "Water";
-    if (e == 2)
+    if (e == "2")
         name = "Fire";
-    if (e == 3)
-        name = "Grass";
-    if (e == 4)
+    if (e == "3")
+        name = " Grass";
+    if (e == "4")
         name = "Light";
-    if (e == 5)
+    if (e == "5")
         name = "Dark";
 }
 
@@ -27,16 +28,16 @@ void element::normalAttack(int attacker)
         if (i != attacker && players[i].hp > 0)
             printf("%d %s\n", i, players[i].name.c_str());
     cout << endl;
-    int t;
+    string t;
     cin >> t;
-    while (players[t].hp <= 0)
+    while (players[stoi(t)].hp <= 0)
     {
         printf("Please enter a valid number!\n");
         cin >> t;
         sleep(2);
     }
-    int damage = players[attacker].attack - players[t].defense;
+    int damage = players[attacker].attack - players[stoi(t)].defense;
     if (damage <= 0)
         damage = 1;
-    players[t].receiveDamage(attacker, damage);
+    players[stoi(t)].receiveDamage(attacker, damage);
 }

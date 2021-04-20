@@ -4,7 +4,7 @@
 #include "../element.h"
 using namespace std;
 
-wind::wind() : element(1)
+wind::wind() : element("1")
 {
     name = "Wind";
     skillNum = 3;

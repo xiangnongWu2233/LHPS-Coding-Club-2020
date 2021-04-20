@@ -4,7 +4,7 @@
 #include "../element.h"
 using namespace std;
 
-ice::ice() : element(1)
+ice::ice() : element("1")
 {
     name = "Ice";
     skillNum = 3;

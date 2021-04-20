@@ -4,7 +4,7 @@
 #include "../element.h"
 using namespace std;
 
-bomb::bomb() : element(2)
+bomb::bomb() : element("2")
 {
     name = "Bomb";
     skillNum = 3;

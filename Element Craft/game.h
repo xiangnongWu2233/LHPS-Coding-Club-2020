@@ -9,7 +9,7 @@ class element
 public:
     string name, skillNames[101];
     int skillNum, elementLevel;
-    element(int e);
+    element(string e);
     void normalAttack(int attacker);
     virtual void skill1() {}
     virtual void skill2() {}
@@ -23,7 +23,7 @@ public:
     int hp, attack, defense, hpRestore, lock, energy, level;
     element *ele;
     ~player();
-    void initialize(string n, int i, int e);
+    void initialize(string n, int i, string e);
     void show();
     void turn();
     void upgrade();

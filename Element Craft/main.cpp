@@ -42,8 +42,7 @@ int main()
     sleep(1);
     for (int i = 1; i <= n; i++)
     {
-        string n;
-        int e;
+        string n, e;
         printf("Enter the name of player %d: ", i);
         cin >> n;
         printf("Choose your element: ");
@@ -51,6 +50,7 @@ int main()
         players[i].initialize(n, i, e);
         cout << endl;
     }
+    system("clear");
     for (int i = 1; i <= n; i++)
         players[i].show();
     cout << endl;
@@ -69,6 +69,7 @@ int main()
         for (int i = 1; i <= n; i++)
             if (players[i].hp > 0)
                 players[i].restore(players[i].hpRestore);
+        sleep(1);
         system("clear");
         for (int i = 1; i <= n; i++)
             if (players[i].hp > 0)

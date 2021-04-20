@@ -14,7 +14,7 @@ player::~player()
     delete ele;
 }
 
-void player::initialize(string n, int i, int e) //initialize each players
+void player::initialize(string n, int i, string e) //initialize each players
 {
     ele = new element(e); // eventually delete the element object when the player die or get a new element
     name = n;
@@ -22,31 +22,31 @@ void player::initialize(string n, int i, int e) //initialize each players
     hpRestore = 1;
     energy = 0;
     level = 1;
-    if (e == 1)
+    if (e == "1")
     {
         attack = 2;
         defense = 5;
         hp = 15;
     }
-    if (e == 2)
+    if (e == "2")
     {
         attack = 5;
         defense = 2;
         hp = 14;
     }
-    if (e == 3)
+    if (e == "3")
     {
         attack = 3;
         defense = 3;
         hp = 16;
     }
-    if (e == 4)
+    if (e == "4")
     {
         attack = 3;
         defense = 4;
         hp = 15;
     }
-    if (e == 5)
+    if (e == "5")
     {
         attack = 4;
         defense = 3;
@@ -74,30 +74,27 @@ void player::upgrade()
         printf("Upgrade! \n\n");
         sleep(1);
         printf("Choose to upgrade: \n");
-        int t = 2; //temporary variable
         printf("1. Attack %d+1\n2.Defense %d+1\n", attack, defense);
         if (hpRestore < 3)
-        {
             printf("3.Hp-Restore %d+1\n", hpRestore);
-            t = 3;
-        }
-        int choice;
+        string choice;
         cin >> choice;
-        while (choice < 1 || choice > t)
+        while (choice != "1" && choice != "2" && choice != "3" || (choice == "3" && hpRestore == 3))
         {
-            if (choice == 3)
-                printf("Has reached its maximum! \n");
+            if (choice == "3")
+                printf("Has reached its maximum! Try again! \n");
             else
             {
                 printf("Please enter a valid option! \n");
                 sleep(2);
             }
+            cin >> choice;
         }
-        if (choice == 1)
+        if (choice == "1")
             attack++;
-        if (choice == 2)
+        if (choice == "2")
             defense++;
-        if (choice == 3)
+        if (choice == "3")
             hpRestore++;
         if (level >= 4 && level <= 8 && ele->elementLevel == 1)
         {
@@ -116,6 +113,7 @@ void player::receiveDamage(int from, int damage)
     players[from].gainEnergy(1);
     if (hp <= 0)
     {
+        dn++;
         printf("\033[31m\033[40mKilled %d %s!\n\033[0m", id, name.c_str());
         sleep(1);
         players[from].gainEnergy(level * 2 + ceil(Round / 5));
@@ -141,19 +139,19 @@ void player::mutate()
     sleep(1);
     printf("Choose your element: \n");
     delete ele;
-    int choice;
+    string choice;
 
     if (ele->name == "Water")
     {
         printf("1. Ice     2. Wind\n");
         cin >> choice;
-        while (choice != 1 && choice != 2)
+        while (choice != "1" && choice != "2")
         {
             printf("Enter a valid number!!!");
             sleep(2);
             cin >> choice;
         }
-        if (choice == 1)
+        if (choice == "1")
             ele = new ice();
         else
             ele = new wind();
@@ -163,13 +161,13 @@ void player::mutate()
     {
         printf("1. Bomb    2. Thunder\n");
         cin >> choice;
-        while (choice != 1 && choice != 2)
+        while (choice != "1" && choice != "2")
         {
             printf("Enter a valid number!!!");
             sleep(2);
             cin >> choice;
         }
-        if (choice == 1)
+        if (choice == "1")
             ele = new bomb();
         else
             ele = new thunder();
@@ -179,13 +177,13 @@ void player::mutate()
     {
         printf("1. Earth   2. Poison\n");
         cin >> choice;
-        while (choice != 1 && choice != 2)
+        while (choice != "1" && choice != "2")
         {
             printf("Enter a valid number!!!");
             sleep(2);
             cin >> choice;
         }
-        if (choice == 1)
+        if (choice == "1")
             ele = new earth();
         else
             ele = new poison();
@@ -195,13 +193,13 @@ void player::mutate()
     {
         printf("1. Divine  2. Spirit\n");
         cin >> choice;
-        while (choice != 1 && choice != 2)
+        while (choice != "1" && choice != "2")
         {
             printf("Enter a valid number!!!");
             sleep(2);
             cin >> choice;
         }
-        if (choice == 1)
+        if (choice == "1")
             ele = new divine();
         else
             ele = new spirit();
@@ -211,13 +209,13 @@ void player::mutate()
     {
         printf("1. Demon   2. Ghost\n");
         cin >> choice;
-        while (choice != 1 && choice != 2)
+        while (choice != "1" && choice != "2")
         {
             printf("Enter a valid number!!!");
             sleep(2);
             cin >> choice;
         }
-        if (choice == 1)
+        if (choice == "1")
             ele = new demon();
         else
             ele = new ghost();
