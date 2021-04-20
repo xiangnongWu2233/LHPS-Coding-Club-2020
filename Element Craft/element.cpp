@@ -14,7 +14,7 @@ element::element(string e)
     if (e == "2")
         name = "Fire";
     if (e == "3")
-        name = " Grass";
+        name = "Grass";
     if (e == "4")
         name = "Light";
     if (e == "5")

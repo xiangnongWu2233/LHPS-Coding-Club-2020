@@ -56,7 +56,7 @@ void player::initialize(string n, int i, string e) //initialize each players
 
 void player::show()
 {
-    printf("%d %-10s :   Element %-10s Attack %-3d  Defense %-3d  HP  %-3d  Level %d  Energy %d\n", id, name.c_str(), ele->name.c_str(), attack, defense, hp, level, energy);
+    printf("%d %-8s :   Element %-8s Attack %-3d  Defense %-3d  HP  %-3d  Level %d  Energy %d\n", id, name.c_str(), ele->name.c_str(), attack, defense, hp, level, energy);
 }
 
 void player::turn()
