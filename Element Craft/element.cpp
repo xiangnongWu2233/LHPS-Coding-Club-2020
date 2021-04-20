@@ -32,14 +32,11 @@ void element::normalAttack(int attacker)
     while (players[t].hp <= 0)
     {
         printf("Please enter a valid number!\n");
+        cin >> t;
         sleep(2);
     }
     int damage = players[attacker].attack - players[t].defense;
     if (damage <= 0)
         damage = 1;
-    int before = players[t].hp;
     players[t].receiveDamage(attacker, damage);
-    if (players[t].hp != before)
-        players[attacker].gainEnergy(1);
-    sleep(0.5);
 }

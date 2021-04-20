@@ -29,6 +29,7 @@ public:
     void upgrade();
     void receiveDamage(int from, int damage);
     void gainEnergy(int amount);
+    void restore(int amount);
     void mutate();
     void evolve();
 };

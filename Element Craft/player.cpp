@@ -56,7 +56,7 @@ void player::initialize(string n, int i, int e) //initialize each players
 
 void player::show()
 {
-    printf("%d %s: Element %s Attack %d  Defense %d  HP  %d  Level %d  Energy %d\n", id, name.c_str(), ele->name.c_str(), attack, defense, hp, level, energy);
+    printf("%d %-10s :   Element %-10s Attack %-3d  Defense %-3d  HP  %-3d  Level %d  Energy %d\n", id, name.c_str(), ele->name.c_str(), attack, defense, hp, level, energy);
 }
 
 void player::turn()
@@ -113,9 +113,10 @@ void player::receiveDamage(int from, int damage)
     printf("%d %s - %d\n", id, name.c_str(), damage);
     hp -= damage;
     cout << endl;
+    players[from].gainEnergy(1);
     if (hp <= 0)
     {
-        printf("Killed %d %s!\n", id, name.c_str());
+        printf("\033[31m\033[40mKilled %d %s!\n\033[0m", id, name.c_str());
         sleep(1);
         players[from].gainEnergy(level * 2 + ceil(Round / 5));
     }
@@ -126,6 +127,12 @@ void player::gainEnergy(int amount)
     printf("%d %s gains %d energies!\n", id, name.c_str(), amount);
     energy += amount;
     upgrade();
+}
+
+void player::restore(int amount)
+{
+    printf("%d %s gains %d health!\n", id, name.c_str(), amount);
+    hp += amount;
 }
 
 void player::mutate()
@@ -215,7 +222,5 @@ void player::mutate()
         else
             ele = new ghost();
     }
-    ele->elementLevel = 2;
     sleep(1);
-    printf("Element mutated: %s\n", ele->name.c_str());
 }

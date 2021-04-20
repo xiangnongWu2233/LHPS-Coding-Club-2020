@@ -68,7 +68,12 @@ int main()
         }
         for (int i = 1; i <= n; i++)
             if (players[i].hp > 0)
+                players[i].restore(players[i].hpRestore);
+        system("clear");
+        for (int i = 1; i <= n; i++)
+            if (players[i].hp > 0)
                 players[i].show();
+
         cout << endl;
         sleep(1);
     }
