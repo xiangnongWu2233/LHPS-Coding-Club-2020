@@ -13,4 +13,10 @@ poison::poison() : element("3")
     printf("\033[32m\033[43m");
     cout << name;
     printf("\033[0m\n");
+    skillcost[1] = 4;
+}
+
+void poison::ultimate()
+{
+    printf("毒气侵袭！");
 }

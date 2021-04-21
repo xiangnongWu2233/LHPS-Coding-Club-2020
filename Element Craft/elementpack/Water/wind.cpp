@@ -13,4 +13,10 @@ wind::wind() : element("1")
     printf("\033[32m\033[46m");
     cout << name;
     printf("\033[0m\n");
+    skillcost[1] = 4;
+}
+
+void wind::ultimate()
+{
+    printf("飓风！");
 }

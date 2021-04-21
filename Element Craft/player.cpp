@@ -61,16 +61,37 @@ void player::show()
 
 void player::turn()
 {
-    printf("It's %d %s's turn to move! ", id, name.c_str());
+    printf("It's %d %s's turn to attack! ", id, name.c_str());
     ele->normalAttack(id);
+    if (ele->elementLevel > 1)
+    {
+        if (energy >= ele->skillcost[1])
+        {
+            sleep(1);
+            printf("Ultimate Ready! 1. Use 2. Skip\n");
+            string choice;
+            cin >> choice;
+            while (choice != "1" && choice != "2")
+            {
+                printf("Please enter a valid option! \n");
+                sleep(2);
+                cin >> choice;
+            }
+            if (choice == "1")
+            {
+                ele->ultimate();
+                energy -= ele->skillcost[1];
+            }
+        }
+    }
 }
 
 void player::upgrade()
 {
     if (energy >= level * 2 - 1)
     {
+        energy -= level * 2 - 1;
         level++;
-        energy = 0;
         printf("Upgrade! \n\n");
         sleep(1);
         printf("Choose to upgrade: \n");

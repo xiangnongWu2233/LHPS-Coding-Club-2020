@@ -13,4 +13,10 @@ earth::earth() : element("3")
     printf("\033[34m\033[42m");
     cout << name;
     printf("\033[0m\n");
+    skillcost[1] = 4;
+}
+
+void earth::ultimate()
+{
+    printf("大地复苏");
 }

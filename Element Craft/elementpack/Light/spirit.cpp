@@ -13,4 +13,10 @@ spirit::spirit() : element("4")
     printf("\033[91m\033[48m");
     cout << name;
     printf("\033[0m\n");
+    skillcost[1] = 4;
+}
+
+void spirit::ultimate()
+{
+    printf("圣灵净化！");
 }

@@ -8,11 +8,10 @@ class element
 {
 public:
     string name, skillNames[101];
-    int skillNum, elementLevel;
+    int skillNum, elementLevel, skillcost[11];
     element(string e);
     void normalAttack(int attacker);
-    virtual void skill1() {}
-    virtual void skill2() {}
+    virtual void ultimate() {}
 };
 
 class player
@@ -26,6 +25,7 @@ public:
     void initialize(string n, int i, string e);
     void show();
     void turn();
+    void skill();
     void upgrade();
     void receiveDamage(int from, int damage);
     void gainEnergy(int amount);
