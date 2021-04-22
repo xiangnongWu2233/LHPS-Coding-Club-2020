@@ -1,3 +1,4 @@
+#include <iostream>
 #include <cstdio>
 #include <cstring>
 #include "../../game.h"
@@ -16,7 +17,7 @@ demon::demon() : element("5")
     skillcost[1] = 4;
 }
 
-void demon::ultimate()
+void demon::ultimate(int attacker)
 {
     printf("六重咒杀！");
 }

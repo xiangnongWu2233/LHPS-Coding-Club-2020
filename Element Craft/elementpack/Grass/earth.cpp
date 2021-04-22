@@ -1,3 +1,4 @@
+#include <iostream>
 #include <cstdio>
 #include <cstring>
 #include "../../game.h"
@@ -16,7 +17,7 @@ earth::earth() : element("3")
     skillcost[1] = 4;
 }
 
-void earth::ultimate()
+void earth::ultimate(int attacker)
 {
     printf("大地复苏");
 }

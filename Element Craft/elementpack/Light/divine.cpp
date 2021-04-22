@@ -1,3 +1,4 @@
+#include <iostream>
 #include <cstdio>
 #include <cstring>
 #include "../../game.h"
@@ -16,7 +17,7 @@ divine::divine() : element("4")
     skillcost[1] = 4;
 }
 
-void divine::ultimate()
+void divine::ultimate(int attacker)
 {
     printf("圣光审判！");
 }

@@ -1,3 +1,4 @@
+#include <iostream>
 #include <cstdio>
 #include <cstring>
 #include "../../game.h"
@@ -16,7 +17,7 @@ wind::wind() : element("1")
     skillcost[1] = 4;
 }
 
-void wind::ultimate()
+void wind::ultimate(int attacker)
 {
     printf("飓风！");
 }

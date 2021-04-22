@@ -65,7 +65,7 @@ void player::turn()
     ele->normalAttack(id);
     if (ele->elementLevel > 1)
     {
-        if (energy >= ele->skillcost[1])
+        if (energy >= 4)
         {
             sleep(1);
             printf("Ultimate Ready! 1. Use 2. Skip\n");
@@ -78,10 +78,7 @@ void player::turn()
                 cin >> choice;
             }
             if (choice == "1")
-            {
-                ele->ultimate();
-                energy -= ele->skillcost[1];
-            }
+                ele->ultimate(id);
         }
     }
 }
@@ -126,18 +123,16 @@ void player::upgrade()
     }
 }
 
-void player::receiveDamage(int from, int damage)
+void player::receiveDamage(int damage)
 {
     printf("%d %s - %d\n", id, name.c_str(), damage);
     hp -= damage;
     cout << endl;
-    players[from].gainEnergy(1);
     if (hp <= 0)
     {
         dn++;
         printf("\033[31m\033[40mKilled %d %s!\n\033[0m", id, name.c_str());
         sleep(1);
-        players[from].gainEnergy(level * 2 + ceil(Round / 5));
     }
 }
 

@@ -1,3 +1,4 @@
+#include <iostream>
 #include <cstdio>
 #include <cstring>
 #include "../../game.h"
@@ -16,7 +17,7 @@ spirit::spirit() : element("4")
     skillcost[1] = 4;
 }
 
-void spirit::ultimate()
+void spirit::ultimate(int attacker)
 {
     printf("圣灵净化！");
 }

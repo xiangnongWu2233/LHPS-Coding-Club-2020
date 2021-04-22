@@ -1,3 +1,4 @@
+#include <iostream>
 #include <cstdio>
 #include <cstring>
 #include "../../game.h"
@@ -16,7 +17,7 @@ poison::poison() : element("3")
     skillcost[1] = 4;
 }
 
-void poison::ultimate()
+void poison::ultimate(int attacker)
 {
     printf("毒气侵袭！");
 }

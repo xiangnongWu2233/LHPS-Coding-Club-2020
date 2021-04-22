@@ -1,5 +1,7 @@
+#include <iostream>
 #include <cstdio>
 #include <cstring>
+#include <unistd.h>
 #include "../../game.h"
 #include "../element.h"
 using namespace std;
@@ -16,7 +18,12 @@ ghost::ghost() : element("5")
     skillcost[1] = 4;
 }
 
-void ghost::ultimate()
+void ghost::ultimate(int attacker)
 {
-    printf("灵魂打击！");
+    printf("%d %s - 5 energies! \n", players[attacker].id, players[attacker].name.c_str());
+    sleep(1);
+    printf("Soul Strike!!!");
+    sleep(2);
+    printf("Choose your target:");
+    sleep(1);
 }

@@ -1,3 +1,4 @@
+#include <iostream>
 #include <cstdio>
 #include <cstring>
 #include "../../game.h"
@@ -16,7 +17,7 @@ bomb::bomb() : element("2")
     skillcost[1] = 4;
 }
 
-void bomb::ultimate()
+void bomb::ultimate(int attacker)
 {
     printf("狂轰滥炸！");
 }

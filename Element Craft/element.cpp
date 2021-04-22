@@ -39,5 +39,8 @@ void element::normalAttack(int attacker)
     int damage = players[attacker].attack - players[stoi(t)].defense;
     if (damage <= 0)
         damage = 1;
-    players[stoi(t)].receiveDamage(attacker, damage);
+    players[stoi(t)].receiveDamage(damage);
+    if (players[stoi(t)].hp <= 0)
+        players[attacker].gainEnergy(players[attacker].level * 2 + ceil(Round / 5));
+    players[attacker].gainEnergy(1);
 }

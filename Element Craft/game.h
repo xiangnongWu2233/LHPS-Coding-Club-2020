@@ -11,7 +11,7 @@ public:
     int skillNum, elementLevel, skillcost[11];
     element(string e);
     void normalAttack(int attacker);
-    virtual void ultimate() {}
+    virtual void ultimate(int attacker) {}
 };
 
 class player
@@ -27,7 +27,7 @@ public:
     void turn();
     void skill();
     void upgrade();
-    void receiveDamage(int from, int damage);
+    void receiveDamage(int damage);
     void gainEnergy(int amount);
     void restore(int amount);
     void mutate();

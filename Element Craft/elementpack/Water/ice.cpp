@@ -1,5 +1,7 @@
+#include <iostream>
 #include <cstdio>
 #include <cstring>
+#include <unistd.h>
 #include "../../game.h"
 #include "../element.h"
 using namespace std;
@@ -16,7 +18,7 @@ ice::ice() : element("1")
     skillcost[1] = 4;
 }
 
-void ice::ultimate()
+void ice::ultimate(int attacker)
 {
     printf("Freeze!!!!");
     sleep(1);

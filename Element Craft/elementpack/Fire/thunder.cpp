@@ -1,5 +1,7 @@
+#include <iostream>
 #include <cstdio>
 #include <cstring>
+#include <unistd.h>
 #include "../../game.h"
 #include "../element.h"
 using namespace std;
@@ -16,7 +18,15 @@ thunder::thunder() : element("2")
     skillcost[1] = 4;
 }
 
-void thunder::ultimate()
+void thunder::ultimate(int attacker)
 {
-    printf("雷霆万钧！");
+    printf("%d %s - 4 energies! \n", players[attacker].id, players[attacker].name.c_str());
+    players[attacker].energy -= 4;
+    sleep(1);
+    printf("Tremendous Thunderbolt!!!");
+    sleep(2);
+    for (int i = 1; i <= n; i++)
+        if (players[i].hp > 0 && i != attacker)
+            players[i].receiveDamage(2 + players[attacker].level);
+    sleep(1);
 }
