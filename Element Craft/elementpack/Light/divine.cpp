@@ -14,7 +14,7 @@ divine::divine() : element("4")
     printf("\033[93m\033[48m");
     cout << name;
     printf("\033[0m\n");
-    skillcost[1] = 4;
+    ultracost = 4;
 }
 
 void divine::ultimate(int attacker)

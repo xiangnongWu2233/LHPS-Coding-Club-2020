@@ -15,7 +15,7 @@ ghost::ghost() : element("5")
     printf("\033[30m\033[44m");
     cout << name;
     printf("\033[0m\n");
-    skillcost[1] = 4;
+    ultracost = 4;
 }
 
 void ghost::ultimate(int attacker)

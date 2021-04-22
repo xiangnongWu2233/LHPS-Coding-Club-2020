@@ -14,7 +14,7 @@ demon::demon() : element("5")
     printf("\033[35m\033[40m");
     cout << name;
     printf("\033[0m\n");
-    skillcost[1] = 4;
+    ultracost = 4;
 }
 
 void demon::ultimate(int attacker)

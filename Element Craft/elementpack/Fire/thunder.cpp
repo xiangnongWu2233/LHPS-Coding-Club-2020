@@ -15,7 +15,7 @@ thunder::thunder() : element("2")
     printf("\033[35m\033[46m");
     cout << name;
     printf("\033[0m\n");
-    skillcost[1] = 4;
+    ultracost = 4;
 }
 
 void thunder::ultimate(int attacker)

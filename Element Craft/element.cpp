@@ -32,9 +32,9 @@ void element::normalAttack(int attacker)
     cin >> t;
     while (players[stoi(t)].hp <= 0)
     {
-        printf("Please enter a valid number!\n");
-        cin >> t;
+        printf("Please enter a valid target!\n");
         sleep(2);
+        cin >> t;
     }
     int damage = players[attacker].attack - players[stoi(t)].defense;
     if (damage <= 0)

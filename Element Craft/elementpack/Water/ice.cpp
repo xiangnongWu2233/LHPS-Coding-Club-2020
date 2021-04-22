@@ -15,7 +15,7 @@ ice::ice() : element("1")
     printf("\033[34m\033[46m");
     cout << name;
     printf("\033[0m\n");
-    skillcost[1] = 4;
+    ultracost = 4;
 }
 
 void ice::ultimate(int attacker)

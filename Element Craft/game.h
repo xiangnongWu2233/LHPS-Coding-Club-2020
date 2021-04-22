@@ -8,7 +8,7 @@ class element
 {
 public:
     string name, skillNames[101];
-    int skillNum, elementLevel, skillcost[11];
+    int skillNum, elementLevel, ultracost;
     element(string e);
     void normalAttack(int attacker);
     virtual void ultimate(int attacker) {}
