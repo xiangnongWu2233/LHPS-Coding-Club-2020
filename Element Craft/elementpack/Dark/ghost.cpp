@@ -6,7 +6,7 @@
 #include "../element.h"
 using namespace std;
 
-ghost::ghost() : element("5")
+ghost::ghost(int i) : element(i, "5")
 {
     name = "Ghost";
     skillNum = 3;
@@ -18,12 +18,12 @@ ghost::ghost() : element("5")
     ultracost = 4;
 }
 
-void ghost::ultimate(int attacker)
+void ghost::ultimate()
 {
-    printf("%d %s - 5 energies! \n", players[attacker].id, players[attacker].name.c_str());
+    printf("%d %s - %d energies! \n", id, players[id].name.c_str(), players[id].ele->ultracost);
+    players[id].energy -= players[id].ele->ultracost;
     sleep(1);
-    printf("Soul Strike!!!");
-    sleep(2);
-    printf("Choose your target:");
-    sleep(1);
+    printf("Choose your target: \n");
+
+    printf("Soul Strike!\n");
 }

@@ -5,7 +5,7 @@
 #include "../element.h"
 using namespace std;
 
-earth::earth() : element("3")
+earth::earth(int i) : element(i, "3")
 {
     name = "Earth";
     skillNum = 3;
@@ -17,7 +17,7 @@ earth::earth() : element("3")
     ultracost = 4;
 }
 
-void earth::ultimate(int attacker)
+void earth::ultimate()
 {
     printf("大地复苏");
 }

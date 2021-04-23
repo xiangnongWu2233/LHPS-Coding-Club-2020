@@ -5,7 +5,7 @@
 #include "../element.h"
 using namespace std;
 
-wind::wind() : element("1")
+wind::wind(int i) : element(i, "1")
 {
     name = "Wind";
     skillNum = 3;
@@ -17,7 +17,7 @@ wind::wind() : element("1")
     ultracost = 4;
 }
 
-void wind::ultimate(int attacker)
+void wind::ultimate()
 {
     printf("飓风！");
 }

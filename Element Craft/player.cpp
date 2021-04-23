@@ -16,7 +16,7 @@ player::~player()
 
 void player::initialize(string n, int i, string e) //initialize each players
 {
-    ele = new element(e); // eventually delete the element object when the player die or get a new element
+    ele = new element(i, e); // eventually delete the element object when the player die or get a new element
     name = n;
     id = i;
     hpRestore = 1;
@@ -62,7 +62,9 @@ void player::show()
 void player::turn()
 {
     printf("It's %d %s's turn to attack! ", id, name.c_str());
-    ele->normalAttack(id);
+    ele->normalAttack();
+    if (dn == n - 1)
+        return;
     if (ele->elementLevel > 1)
     {
         if (energy >= 4)
@@ -78,7 +80,7 @@ void player::turn()
                 cin >> choice;
             }
             if (choice == "1")
-                ele->ultimate(id);
+                ele->ultimate();
         }
     }
 }
@@ -123,16 +125,18 @@ void player::upgrade()
     }
 }
 
-void player::receiveDamage(int damage)
+void player::receiveDamage(int from, int damage)
 {
     printf("%d %s - %d\n", id, name.c_str(), damage);
     hp -= damage;
+    players[from].gainEnergy(1);
     cout << endl;
     if (hp <= 0)
     {
         dn++;
         printf("\033[31m\033[40mKilled %d %s!\n\033[0m", id, name.c_str());
         sleep(1);
+        players[from].gainEnergy(players[from].level * 2 + ceil(Round / 5));
     }
 }
 
@@ -168,9 +172,9 @@ void player::mutate()
             cin >> choice;
         }
         if (choice == "1")
-            ele = new ice();
+            ele = new ice(id);
         else
-            ele = new wind();
+            ele = new wind(id);
     }
 
     if (ele->name == "Fire")
@@ -184,9 +188,9 @@ void player::mutate()
             cin >> choice;
         }
         if (choice == "1")
-            ele = new bomb();
+            ele = new bomb(id);
         else
-            ele = new thunder();
+            ele = new thunder(id);
     }
 
     if (ele->name == "Grass")
@@ -200,9 +204,9 @@ void player::mutate()
             cin >> choice;
         }
         if (choice == "1")
-            ele = new earth();
+            ele = new earth(id);
         else
-            ele = new poison();
+            ele = new poison(id);
     }
 
     if (ele->name == "Light")
@@ -216,9 +220,9 @@ void player::mutate()
             cin >> choice;
         }
         if (choice == "1")
-            ele = new divine();
+            ele = new divine(id);
         else
-            ele = new spirit();
+            ele = new spirit(id);
     }
 
     if (ele->name == "Dark")
@@ -232,9 +236,9 @@ void player::mutate()
             cin >> choice;
         }
         if (choice == "1")
-            ele = new demon();
+            ele = new demon(id);
         else
-            ele = new ghost();
+            ele = new ghost(id);
     }
     sleep(1);
 }

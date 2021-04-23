@@ -5,7 +5,7 @@
 #include "../element.h"
 using namespace std;
 
-spirit::spirit() : element("4")
+spirit::spirit(int i) : element(i, "4")
 {
     name = "Spirit";
     skillNum = 3;
@@ -17,7 +17,7 @@ spirit::spirit() : element("4")
     ultracost = 4;
 }
 
-void spirit::ultimate(int attacker)
+void spirit::ultimate()
 {
     printf("圣灵净化！");
 }

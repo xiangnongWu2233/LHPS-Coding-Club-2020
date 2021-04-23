@@ -8,71 +8,71 @@
 class ice : public element
 {
 public:
-    ice();
-    virtual void ultimate(int attacker);
+    ice(int i);
+    virtual void ultimate();
 };
 
 class wind : public element
 {
 public:
-    wind();
-    virtual void ultimate(int attacker);
+    wind(int i);
+    virtual void ultimate();
 };
 
 class thunder : public element
 {
 public:
-    thunder();
-    virtual void ultimate(int attacer);
+    thunder(int i);
+    virtual void ultimate();
 };
 
 class bomb : public element
 {
 public:
-    bomb();
-    virtual void ultimate(int attacker);
+    bomb(int i);
+    virtual void ultimate();
 };
 
 class earth : public element
 {
 public:
-    earth();
-    virtual void ultimate(int attacker);
+    earth(int i);
+    virtual void ultimate();
 };
 
 class poison : public element
 {
 public:
-    poison();
-    virtual void ultimate(int attacker);
+    poison(int i);
+    virtual void ultimate();
 };
 
 class divine : public element
 {
 public:
-    divine();
-    virtual void ultimate(int attacker);
+    divine(int i);
+    virtual void ultimate();
 };
 
 class spirit : public element
 {
 public:
-    spirit();
-    virtual void ultimate(int attacker);
+    spirit(int i);
+    virtual void ultimate();
 };
 
 class demon : public element
 {
 public:
-    demon();
-    virtual void ultimate(int attacker);
+    demon(int i);
+    virtual void ultimate();
 };
 
 class ghost : public element
 {
 public:
-    ghost();
-    virtual void ultimate(int attacker);
+    ghost(int i);
+    virtual void ultimate();
 };
 
 #endif

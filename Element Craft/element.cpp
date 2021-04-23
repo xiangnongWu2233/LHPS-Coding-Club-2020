@@ -5,10 +5,11 @@
 #include "game.h"
 using namespace std;
 
-element::element(string e)
+element::element(int i, string e)
 {
     skillNum = 1;
     elementLevel = 1;
+    id = i;
     if (e == "1")
         name = "Water";
     if (e == "2")
@@ -21,11 +22,11 @@ element::element(string e)
         name = "Dark";
 }
 
-void element::normalAttack(int attacker)
+void element::normalAttack()
 {
     printf("Choose your target: \n");
     for (int i = 1; i <= n; i++)
-        if (i != attacker && players[i].hp > 0)
+        if (i != id && players[i].hp > 0)
             printf("%d %s\n", i, players[i].name.c_str());
     cout << endl;
     string t;
@@ -36,11 +37,8 @@ void element::normalAttack(int attacker)
         sleep(2);
         cin >> t;
     }
-    int damage = players[attacker].attack - players[stoi(t)].defense;
+    int damage = players[id].attack - players[stoi(t)].defense;
     if (damage <= 0)
         damage = 1;
-    players[stoi(t)].receiveDamage(damage);
-    if (players[stoi(t)].hp <= 0)
-        players[attacker].gainEnergy(players[attacker].level * 2 + ceil(Round / 5));
-    players[attacker].gainEnergy(1);
+    players[stoi(t)].receiveDamage(id, damage);
 }

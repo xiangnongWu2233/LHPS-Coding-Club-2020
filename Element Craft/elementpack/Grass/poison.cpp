@@ -5,7 +5,7 @@
 #include "../element.h"
 using namespace std;
 
-poison::poison() : element("3")
+poison::poison(int i) : element(i, "3")
 {
     name = "Poison";
     skillNum = 3;
@@ -17,7 +17,7 @@ poison::poison() : element("3")
     ultracost = 4;
 }
 
-void poison::ultimate(int attacker)
+void poison::ultimate()
 {
     printf("毒气侵袭！");
 }

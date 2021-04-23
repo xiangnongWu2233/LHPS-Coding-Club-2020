@@ -5,7 +5,7 @@
 #include "../element.h"
 using namespace std;
 
-divine::divine() : element("4")
+divine::divine(int i) : element(i, "4")
 {
     name = "Divine";
     skillNum = 3;
@@ -17,7 +17,7 @@ divine::divine() : element("4")
     ultracost = 4;
 }
 
-void divine::ultimate(int attacker)
+void divine::ultimate()
 {
     printf("圣光审判！");
 }

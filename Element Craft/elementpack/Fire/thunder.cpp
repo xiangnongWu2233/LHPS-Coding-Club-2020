@@ -6,7 +6,7 @@
 #include "../element.h"
 using namespace std;
 
-thunder::thunder() : element("2")
+thunder::thunder(int i) : element(i, "2")
 {
     name = "Thunder";
     skillNum = 3;
@@ -18,15 +18,15 @@ thunder::thunder() : element("2")
     ultracost = 4;
 }
 
-void thunder::ultimate(int attacker)
+void thunder::ultimate()
 {
-    printf("%d %s - 4 energies! \n", players[attacker].id, players[attacker].name.c_str());
-    players[attacker].energy -= 4;
+    printf("%d %s - %d energies! \n", id, players[id].name.c_str(), players[id].ele->ultracost);
+    players[id].energy -= players[id].ele->ultracost;
     sleep(1);
     printf("Tremendous Thunderbolt!!!");
     sleep(2);
     for (int i = 1; i <= n; i++)
-        if (players[i].hp > 0 && i != attacker)
-            players[i].receiveDamage(2 + players[attacker].level);
+        if (players[i].hp > 0 && i != id)
+            players[i].receiveDamage(id, 2 + players[id].level);
     sleep(1);
 }

@@ -5,7 +5,7 @@
 #include "../element.h"
 using namespace std;
 
-demon::demon() : element("5")
+demon::demon(int i) : element(i, "5")
 {
     name = "Demon";
     skillNum = 3;
@@ -17,7 +17,7 @@ demon::demon() : element("5")
     ultracost = 4;
 }
 
-void demon::ultimate(int attacker)
+void demon::ultimate()
 {
     printf("六重咒杀！");
 }

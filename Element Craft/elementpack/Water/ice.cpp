@@ -6,7 +6,7 @@
 #include "../element.h"
 using namespace std;
 
-ice::ice() : element("1")
+ice::ice(int i) : element(i, "1")
 {
     name = "Ice";
     skillNum = 3;
@@ -18,7 +18,7 @@ ice::ice() : element("1")
     ultracost = 4;
 }
 
-void ice::ultimate(int attacker)
+void ice::ultimate()
 {
     printf("Freeze!!!!");
     sleep(1);
