@@ -15,13 +15,13 @@ ghost::ghost(int i) : element(i, "5")
     printf("\033[30m\033[44m");
     cout << name;
     printf("\033[0m\n");
-    ultracost = 4;
+    ultimateCost = 4;
 }
 
 void ghost::ultimate()
 {
-    printf("%d %s - %d energies! \n", id, players[id].name.c_str(), players[id].ele->ultracost);
-    players[id].energy -= players[id].ele->ultracost;
+    printf("%d %s - %d energies! \n", id, players[id].name.c_str(), players[id].ele->ultimateCost);
+    players[id].energy -= players[id].ele->ultimateCost;
     sleep(1);
     printf("Choose your target: \n");
 

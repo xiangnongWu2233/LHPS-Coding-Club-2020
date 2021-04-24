@@ -14,7 +14,7 @@ demon::demon(int i) : element(i, "5")
     printf("\033[35m\033[40m");
     cout << name;
     printf("\033[0m\n");
-    ultracost = 4;
+    ultimateCost = 4;
 }
 
 void demon::ultimate()

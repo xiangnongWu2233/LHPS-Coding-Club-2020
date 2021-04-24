@@ -14,7 +14,7 @@ earth::earth(int i) : element(i, "3")
     printf("\033[34m\033[42m");
     cout << name;
     printf("\033[0m\n");
-    ultracost = 4;
+    ultimateCost = 4;
 }
 
 void earth::ultimate()

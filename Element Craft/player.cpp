@@ -25,32 +25,32 @@ void player::initialize(string n, int i, string e) //initialize each players
     if (e == "1")
     {
         attack = 2;
-        defense = 5;
-        hp = 15;
+        defense = 4;
+        hp = 20;
     }
     if (e == "2")
     {
         attack = 5;
         defense = 2;
-        hp = 14;
+        hp = 16;
     }
     if (e == "3")
     {
         attack = 3;
         defense = 3;
-        hp = 16;
+        hp = 18;
     }
     if (e == "4")
     {
         attack = 3;
         defense = 4;
-        hp = 15;
+        hp = 19;
     }
     if (e == "5")
     {
         attack = 4;
         defense = 3;
-        hp = 15;
+        hp = 19;
     }
 }
 
@@ -61,13 +61,19 @@ void player::show()
 
 void player::turn()
 {
+    if (lock >= 1)
+    {
+        printf("%d %s can't move!!!\n", id, name.c_str());
+        lock--;
+        return;
+    }
     printf("It's %d %s's turn to attack! ", id, name.c_str());
     ele->normalAttack();
     if (dn == n - 1)
         return;
     if (ele->elementLevel > 1)
     {
-        if (energy >= 4)
+        while (energy >= ele->ultimateCost)
         {
             sleep(1);
             printf("Ultimate Ready! 1. Use 2. Skip\n");
@@ -81,6 +87,10 @@ void player::turn()
             }
             if (choice == "1")
                 ele->ultimate();
+            else
+                break;
+            if (dn == n - 1)
+                return;
         }
     }
 }
@@ -129,7 +139,6 @@ void player::receiveDamage(int from, int damage)
 {
     printf("%d %s - %d\n", id, name.c_str(), damage);
     hp -= damage;
-    players[from].gainEnergy(1);
     cout << endl;
     if (hp <= 0)
     {

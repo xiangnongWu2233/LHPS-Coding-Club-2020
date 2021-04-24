@@ -15,18 +15,18 @@ thunder::thunder(int i) : element(i, "2")
     printf("\033[35m\033[46m");
     cout << name;
     printf("\033[0m\n");
-    ultracost = 4;
+    ultimateCost = 4;
 }
 
 void thunder::ultimate()
 {
-    printf("%d %s - %d energies! \n", id, players[id].name.c_str(), players[id].ele->ultracost);
-    players[id].energy -= players[id].ele->ultracost;
+    printf("%d %s - %d energies! \n", id, players[id].name.c_str(), players[id].ele->ultimateCost);
+    players[id].energy -= players[id].ele->ultimateCost;
     sleep(1);
-    printf("Tremendous Thunderbolt!!!");
+    printf("Tremendous Thunderbolt!!!\n");
     sleep(2);
     for (int i = 1; i <= n; i++)
         if (players[i].hp > 0 && i != id)
-            players[i].receiveDamage(id, 2 + players[id].level);
+            players[i].receiveDamage(id, 2 * players[id].level);
     sleep(1);
 }

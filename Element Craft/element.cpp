@@ -40,5 +40,7 @@ void element::normalAttack()
     int damage = players[id].attack - players[stoi(t)].defense;
     if (damage <= 0)
         damage = 1;
+
     players[stoi(t)].receiveDamage(id, damage);
+    players[id].gainEnergy(1);
 }

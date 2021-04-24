@@ -14,7 +14,7 @@ poison::poison(int i) : element(i, "3")
     printf("\033[32m\033[43m");
     cout << name;
     printf("\033[0m\n");
-    ultracost = 4;
+    ultimateCost = 4;
 }
 
 void poison::ultimate()
