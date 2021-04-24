@@ -15,7 +15,7 @@ ice::ice(int i) : element(i, "1")
     printf("\033[34m\033[46m");
     cout << name;
     printf("\033[0m\n");
-    ultimateCost = 4;
+    ultimateCost = 6;
 }
 
 void ice::ultimate()

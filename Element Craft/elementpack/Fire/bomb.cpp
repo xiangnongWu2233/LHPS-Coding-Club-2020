@@ -15,13 +15,14 @@ bomb::bomb(int i) : element(i, "2")
     printf("\033[93m\033[41m");
     cout << name;
     printf("\033[0m\n");
-    ultimateCost = 5;
+    ultimateCost = 7;
 }
 
 void bomb::ultimate()
 {
     printf("%d %s - %d energies! \n", id, players[id].name.c_str(), players[id].ele->ultimateCost);
     players[id].energy -= players[id].ele->ultimateCost;
+    sleep(1);
     printf("Choose your target: \n");
     string t;
     for (int i = 1; i <= n; i++)

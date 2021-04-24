@@ -31,9 +31,12 @@ void element::normalAttack()
     cout << endl;
     string t;
     cin >> t;
-    while (players[stoi(t)].hp <= 0)
+    while (players[stoi(t)].hp <= 0 || stoi(t) == id)
     {
-        printf("Please enter a valid target!\n");
+        if (stoi(t) == id)
+            printf("Can't attack yourself!\n");
+        else
+            printf("Please enter a valid target!\n");
         sleep(2);
         cin >> t;
     }
@@ -42,5 +45,8 @@ void element::normalAttack()
         damage = 1;
 
     players[stoi(t)].receiveDamage(id, damage);
-    players[id].gainEnergy(1);
+    if (players[id].ele->elementLevel > 1)
+        players[id].gainEnergy(2);
+    else
+        players[id].gainEnergy(1);
 }

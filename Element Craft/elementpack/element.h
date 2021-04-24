@@ -64,6 +64,7 @@ public:
 class demon : public element
 {
 public:
+    int sigil;
     demon(int i);
     virtual void ultimate();
 };
