@@ -9,7 +9,8 @@ class element
 public:
     string name, skillNames[101];
     int id, skillNum, elementLevel, ultimateCost;
-    element(int i, string e);
+    int hpMaximum[11];
+    int baseAttack, baseDefense, baseHP;
     void normalAttack();
     virtual void ultimate() {}
 };
@@ -19,7 +20,6 @@ class player
 public:
     string name;
     int id, hp, attack, defense, hpRestore, energy, level;
-
     int lock;
     element *ele;
     ~player();

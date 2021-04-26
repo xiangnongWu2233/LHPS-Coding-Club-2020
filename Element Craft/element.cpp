@@ -5,23 +5,6 @@
 #include "game.h"
 using namespace std;
 
-element::element(int i, string e)
-{
-    skillNum = 1;
-    elementLevel = 1;
-    id = i;
-    if (e == "1")
-        name = "Water";
-    if (e == "2")
-        name = "Fire";
-    if (e == "3")
-        name = "Grass";
-    if (e == "4")
-        name = "Light";
-    if (e == "5")
-        name = "Dark";
-}
-
 void element::normalAttack()
 {
     printf("Choose your target: \n");

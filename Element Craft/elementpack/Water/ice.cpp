@@ -6,7 +6,7 @@
 #include "../element.h"
 using namespace std;
 
-ice::ice(int i) : element(i, "1")
+ice::ice(int i)
 {
     name = "Ice";
     skillNum = 3;

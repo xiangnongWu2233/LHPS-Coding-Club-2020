@@ -7,6 +7,7 @@
 #include <cmath>
 #include "game.h"
 #include "elementpack/element.h"
+#include "elementpack/baseelement.h"
 using namespace std;
 
 player::~player()
@@ -16,42 +17,24 @@ player::~player()
 
 void player::initialize(string n, int i, string e) //initialize each players
 {
-    ele = new element(i, e); // eventually delete the element object when the player die or get a new element
     name = n;
     id = i;
     hpRestore = 1;
     energy = 0;
     level = 1;
     if (e == "1")
-    {
-        attack = 2;
-        defense = 4;
-        hp = 15;
-    }
-    if (e == "2")
-    {
-        attack = 5;
-        defense = 2;
-        hp = 13;
-    }
-    if (e == "3")
-    {
-        attack = 3;
-        defense = 3;
-        hp = 18;
-    }
-    if (e == "4")
-    {
-        attack = 3;
-        defense = 4;
-        hp = 16;
-    }
-    if (e == "5")
-    {
-        attack = 4;
-        defense = 3;
-        hp = 16;
-    }
+        ele = new water();
+    else if (e == "2")
+        ele = new fire();
+    else if (e == "3")
+        ele = new grass();
+    else if (e == "4")
+        ele = new light();
+    else if (e == "5")
+        ele = new dark();
+    attack = ele->baseAttack;
+    defense = ele->baseDefense;
+    hp = ele->baseHP;
 }
 
 void player::show()

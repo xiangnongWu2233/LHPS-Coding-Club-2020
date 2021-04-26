@@ -5,7 +5,7 @@
 #include "../element.h"
 using namespace std;
 
-earth::earth(int i) : element(i, "3")
+earth::earth(int i)
 {
     name = "Earth";
     skillNum = 3;

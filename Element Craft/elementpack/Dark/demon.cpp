@@ -6,7 +6,7 @@
 #include "../element.h"
 using namespace std;
 
-demon::demon(int i) : element(i, "5")
+demon::demon(int i)
 {
     name = "Demon";
     skillNum = 3;

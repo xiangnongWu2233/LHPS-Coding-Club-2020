@@ -5,7 +5,7 @@
 #include "../element.h"
 using namespace std;
 
-poison::poison(int i) : element(i, "3")
+poison::poison(int i)
 {
     name = "Poison";
     skillNum = 3;

@@ -6,7 +6,7 @@
 #include "../element.h"
 using namespace std;
 
-thunder::thunder(int i) : element(i, "2")
+thunder::thunder(int i)
 {
     name = "Thunder";
     skillNum = 3;

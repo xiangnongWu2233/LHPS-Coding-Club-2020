@@ -8,6 +8,7 @@
 #include "player.cpp"
 
 #include "elementpack/element.h"
+#include "elementpack/baseelement.h"
 
 #include "elementpack/Water/ice.cpp"
 #include "elementpack/Water/wind.cpp"
@@ -42,12 +43,12 @@ int main()
     sleep(1);
     for (int i = 1; i <= n; i++)
     {
-        string n, e;
+        string na, e;
         printf("Enter the name of player %d: ", i);
-        cin >> n;
+        cin >> na;
         printf("Choose your element: ");
         cin >> e;
-        players[i].initialize(n, i, e);
+        players[i].initialize(na, i, e);
         cout << endl;
     }
     system("clear");
@@ -68,7 +69,11 @@ int main()
         }
         for (int i = 1; i <= n; i++)
             if (players[i].hp > 0)
+            {
                 players[i].restore(players[i].hpRestore);
+                if (players[i].hp > players[i].ele->hpMaximum[players[i].level])
+                    players[i].hp = players[i].ele->hpMaximum[players[i].level];
+            }
         sleep(1);
         system("clear");
         for (int i = 1; i <= n; i++)

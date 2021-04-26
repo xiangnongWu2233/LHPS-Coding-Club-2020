@@ -5,7 +5,7 @@
 #include "../element.h"
 using namespace std;
 
-divine::divine(int i) : element(i, "4")
+divine::divine(int i)
 {
     name = "Divine";
     skillNum = 3;

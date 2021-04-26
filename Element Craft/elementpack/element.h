@@ -2,24 +2,25 @@
 #define ELEMENT_H
 
 #include "../game.h"
+#include "baseelement.h"
 #include <cstring>
 #include <cstdio>
 
-class ice : public element
+class ice : public water
 {
 public:
     ice(int i);
     virtual void ultimate();
 };
 
-class wind : public element
+class wind : public water
 {
 public:
     wind(int i);
     virtual void ultimate();
 };
 
-class thunder : public element
+class thunder : public fire
 {
 public:
     thunder(int i);
