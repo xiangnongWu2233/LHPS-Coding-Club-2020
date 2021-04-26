@@ -15,7 +15,7 @@ bomb::bomb(int i) : element(i, "2")
     printf("\033[93m\033[41m");
     cout << name;
     printf("\033[0m\n");
-    ultimateCost = 7;
+    ultimateCost = 5;
 }
 
 void bomb::ultimate()

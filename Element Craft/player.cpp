@@ -20,37 +20,37 @@ void player::initialize(string n, int i, string e) //initialize each players
     name = n;
     id = i;
     hpRestore = 1;
-    energy = 2;
+    energy = 0;
     level = 1;
     if (e == "1")
     {
-        attack = 3;
-        defense = 5;
-        hp = 18;
+        attack = 2;
+        defense = 4;
+        hp = 15;
     }
     if (e == "2")
     {
-        attack = 6;
-        defense = 3;
-        hp = 16;
+        attack = 5;
+        defense = 2;
+        hp = 13;
     }
     if (e == "3")
     {
-        attack = 4;
-        defense = 4;
-        hp = 20;
+        attack = 3;
+        defense = 3;
+        hp = 18;
     }
     if (e == "4")
     {
-        attack = 4;
-        defense = 5;
-        hp = 19;
+        attack = 3;
+        defense = 4;
+        hp = 16;
     }
     if (e == "5")
     {
-        attack = 5;
-        defense = 4;
-        hp = 19;
+        attack = 4;
+        defense = 3;
+        hp = 16;
     }
 }
 
@@ -97,19 +97,19 @@ void player::turn()
 
 void player::upgrade()
 {
-    if (energy >= level * 2 + 1)
+    if (energy >= level * 2 - 1)
     {
-        energy -= level * 2 + 1;
+        energy -= level * 2 - 1;
         level++;
         printf("Upgrade! \n\n");
         sleep(1);
         printf("Choose to upgrade: \n");
         printf("1. Attack %d+1\n2.Defense %d+1\n", attack, defense);
-        if (hpRestore < 4)
+        if (hpRestore < 3)
             printf("3.Hp-Restore %d+1\n", hpRestore);
         string choice;
         cin >> choice;
-        while (choice != "1" && choice != "2" && choice != "3" || (choice == "3" && hpRestore == 4))
+        while (choice != "1" && choice != "2" && choice != "3" || (choice == "3" && hpRestore == 3))
         {
             if (choice == "3")
                 printf("Has reached its maximum! Try again! \n");
@@ -129,7 +129,7 @@ void player::upgrade()
         if (level >= 4 && ele->elementLevel == 1)
         {
             int coin = rand() % 100 + 1;
-            if (coin >= 50)
+            if (coin >= 30)
                 mutate();
         }
     }

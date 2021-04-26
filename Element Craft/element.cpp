@@ -45,8 +45,5 @@ void element::normalAttack()
         damage = 1;
 
     players[stoi(t)].receiveDamage(id, damage);
-    if (players[id].ele->elementLevel > 1)
-        players[id].gainEnergy(2);
-    else
-        players[id].gainEnergy(1);
+    players[id].gainEnergy(1);
 }
