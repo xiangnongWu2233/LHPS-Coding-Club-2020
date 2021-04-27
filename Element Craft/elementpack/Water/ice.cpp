@@ -3,10 +3,11 @@
 #include <cstring>
 #include <unistd.h>
 #include "../../game.h"
-#include "../element.h"
+#include "../baseelement.h"
+#include "../mutatedelement.h"
 using namespace std;
 
-ice::ice(int i)
+ice::ice() : water()
 {
     name = "Ice";
     skillNum = 3;
@@ -15,7 +16,7 @@ ice::ice(int i)
     printf("\033[34m\033[46m");
     cout << name;
     printf("\033[0m\n");
-    ultimateCost = 4;
+    ultimateCost = 6;
 }
 
 void ice::ultimate()
@@ -30,7 +31,7 @@ void ice::ultimate()
         {
             printf("Freeze %d %s !\n", i, players[i].name.c_str());
             players[i].lock += int(players[id].level / 2);
-            players[i].receiveDamage(id, 2 + players[id].level);
+            players[i].receiveDamage(id, players[id].level);
         }
     sleep(1);
 }

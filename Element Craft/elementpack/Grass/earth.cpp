@@ -2,10 +2,11 @@
 #include <cstdio>
 #include <cstring>
 #include "../../game.h"
-#include "../element.h"
+#include "../baseelement.h"
+#include "../mutatedelement.h"
 using namespace std;
 
-earth::earth(int i)
+earth::earth() : grass()
 {
     name = "Earth";
     skillNum = 3;

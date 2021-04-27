@@ -7,8 +7,8 @@
 #include "element.cpp"
 #include "player.cpp"
 
-#include "elementpack/element.h"
 #include "elementpack/baseelement.h"
+#include "elementpack/mutatedelement.h"
 
 #include "elementpack/Water/ice.cpp"
 #include "elementpack/Water/wind.cpp"
@@ -34,7 +34,7 @@ int main()
     printf("Enter the number of players: ");
     cin >> n;
     cout << endl;
-    printf("1 Water  Attack 2 Defense 4 HP 15\n");
+    printf("1 Water  Attack 2 Defense 5 HP 15\n");
     printf("2 Fire   Attack 5 Defense 2 HP 13\n");
     printf("3 Grass  Attack 3 Defense 3 HP 18\n");
     printf("4 Light  Attack 3 Defense 4 HP 16\n");
@@ -79,7 +79,6 @@ int main()
         for (int i = 1; i <= n; i++)
             if (players[i].hp > 0)
                 players[i].show();
-
         cout << endl;
         sleep(1);
     }

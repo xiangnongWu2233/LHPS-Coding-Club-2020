@@ -3,10 +3,11 @@
 #include <cstring>
 #include <unistd.h>
 #include "../../game.h"
-#include "../element.h"
+#include "../baseelement.h"
+#include "../mutatedelement.h"
 using namespace std;
 
-ghost::ghost(int i)
+ghost::ghost() : dark()
 {
     name = "Ghost";
     skillNum = 3;
@@ -15,7 +16,7 @@ ghost::ghost(int i)
     printf("\033[30m\033[44m");
     cout << name;
     printf("\033[0m\n");
-    ultimateCost = 4;
+    ultimateCost = 5;
 }
 
 void ghost::ultimate()
@@ -37,8 +38,8 @@ void ghost::ultimate()
     }
     sleep(2);
     printf("Soul Strike!!!\n");
-    printf("%d %s defense - 2!\n", stoi(t), players[stoi(t)].name.c_str());
-    players[stoi(t)].defense -= 2;
+    printf("%d %s defense - 1!\n", stoi(t), players[stoi(t)].name.c_str());
+    players[stoi(t)].defense -= 1;
     players[stoi(t)].receiveDamage(id, players[id].attack);
     sleep(1);
 }

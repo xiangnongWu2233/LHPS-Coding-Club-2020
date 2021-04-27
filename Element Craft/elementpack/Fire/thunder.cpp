@@ -3,10 +3,11 @@
 #include <cstring>
 #include <unistd.h>
 #include "../../game.h"
-#include "../element.h"
+#include "../baseelement.h"
+#include "../mutatedelement.h"
 using namespace std;
 
-thunder::thunder(int i)
+thunder::thunder() : fire()
 {
     name = "Thunder";
     skillNum = 3;
@@ -15,7 +16,7 @@ thunder::thunder(int i)
     printf("\033[35m\033[46m");
     cout << name;
     printf("\033[0m\n");
-    ultimateCost = 4;
+    ultimateCost = 5;
 }
 
 void thunder::ultimate()
@@ -27,6 +28,6 @@ void thunder::ultimate()
     sleep(2);
     for (int i = 1; i <= n; i++)
         if (players[i].hp > 0 && i != id)
-            players[i].receiveDamage(id, 2 * players[id].level);
+            players[i].receiveDamage(id, players[id].attack);
     sleep(1);
 }

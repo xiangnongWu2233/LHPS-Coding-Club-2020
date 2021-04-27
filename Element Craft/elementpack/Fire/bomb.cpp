@@ -3,10 +3,11 @@
 #include <cstring>
 #include <unistd.h>
 #include "../../game.h"
-#include "../element.h"
+#include "../baseelement.h"
+#include "../mutatedelement.h"
 using namespace std;
 
-bomb::bomb(int i)
+bomb::bomb() : fire()
 {
     name = "Bomb";
     skillNum = 3;
@@ -15,7 +16,7 @@ bomb::bomb(int i)
     printf("\033[93m\033[41m");
     cout << name;
     printf("\033[0m\n");
-    ultimateCost = 5;
+    ultimateCost = 6;
 }
 
 void bomb::ultimate()
@@ -37,6 +38,6 @@ void bomb::ultimate()
     }
     sleep(2);
     printf("Devastate!!!\n");
-    players[stoi(t)].receiveDamage(id, 10 + players[id].attack);
+    players[stoi(t)].receiveDamage(id, int((players[stoi(t)].ele->hpMaximum[players[stoi(t)].level] - players[stoi(t)].hp) / 3));
     sleep(1);
 }

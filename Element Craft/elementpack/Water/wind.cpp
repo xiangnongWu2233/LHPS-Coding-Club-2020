@@ -3,10 +3,11 @@
 #include <cstring>
 #include <unistd.h>
 #include "../../game.h"
-#include "../element.h"
+#include "../baseelement.h"
+#include "../mutatedelement.h"
 using namespace std;
 
-wind::wind(int i)
+wind::wind() : water()
 {
     name = "Wind";
     skillNum = 3;
@@ -37,7 +38,7 @@ void wind::ultimate()
     }
     sleep(2);
     printf("Stormrage!!!\n");
-    players[stoi(t)].receiveDamage(id, players[id].attack + players[id].level);
+    players[stoi(t)].receiveDamage(id, players[id].defense + 3);
     printf("%d %s in air!\n", stoi(t), players[stoi(t)].name.c_str());
     players[stoi(t)].lock += 1;
     sleep(1);

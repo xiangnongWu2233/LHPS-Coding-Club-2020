@@ -2,10 +2,11 @@
 #include <cstdio>
 #include <cstring>
 #include "../../game.h"
-#include "../element.h"
+#include "../baseelement.h"
+#include "../mutatedelement.h"
 using namespace std;
 
-poison::poison(int i)
+poison::poison() : grass()
 {
     name = "Poison";
     skillNum = 3;

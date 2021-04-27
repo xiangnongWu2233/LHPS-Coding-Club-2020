@@ -9,71 +9,71 @@
 class ice : public water
 {
 public:
-    ice(int i);
+    ice();
     virtual void ultimate();
 };
 
 class wind : public water
 {
 public:
-    wind(int i);
+    wind();
     virtual void ultimate();
 };
 
 class thunder : public fire
 {
 public:
-    thunder(int i);
+    thunder();
     virtual void ultimate();
 };
 
-class bomb : public element
+class bomb : public fire
 {
 public:
-    bomb(int i);
+    bomb();
     virtual void ultimate();
 };
 
-class earth : public element
+class earth : public grass
 {
 public:
-    earth(int i);
+    earth();
     virtual void ultimate();
 };
 
-class poison : public element
+class poison : public grass
 {
 public:
-    poison(int i);
+    poison();
     virtual void ultimate();
 };
 
-class divine : public element
+class divine : public light
 {
 public:
-    divine(int i);
+    divine();
     virtual void ultimate();
 };
 
-class spirit : public element
+class spirit : public light
 {
 public:
-    spirit(int i);
+    spirit();
     virtual void ultimate();
 };
 
-class demon : public element
+class demon : public dark
 {
 public:
     int sigil;
-    demon(int i);
+    demon();
     virtual void ultimate();
 };
 
-class ghost : public element
+class ghost : public dark
 {
 public:
-    ghost(int i);
+    ghost();
     virtual void ultimate();
 };
 

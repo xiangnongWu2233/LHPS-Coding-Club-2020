@@ -2,10 +2,11 @@
 #include <cstdio>
 #include <cstring>
 #include "../../game.h"
-#include "../element.h"
+#include "../baseelement.h"
+#include "../mutatedelement.h"
 using namespace std;
 
-spirit::spirit(int i)
+spirit::spirit() : light()
 {
     name = "Spirit";
     skillNum = 3;

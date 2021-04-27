@@ -13,7 +13,7 @@ public:
         baseHP = 15;
         hpMaximum[1] = baseHP;
         for (int i = 2; i <= 10; i++)
-            hpMaximum[i] = hpMaximum[i - 1] + i;
+            hpMaximum[i] = hpMaximum[i - 1] + i + 3;
     }
 };
 
@@ -25,10 +25,10 @@ public:
         name = "Fire";
         baseAttack = 5;
         baseDefense = 2;
-        baseHP = 13;
+        baseHP = 14;
         hpMaximum[1] = baseHP;
         for (int i = 2; i <= 10; i++)
-            hpMaximum[i] = hpMaximum[i - 1] + 2;
+            hpMaximum[i] = hpMaximum[i - 1] + i + 1;
     }
 };
 
@@ -43,7 +43,7 @@ public:
         baseHP = 20;
         hpMaximum[1] = baseHP;
         for (int i = 2; i <= 10; i++)
-            hpMaximum[i] = hpMaximum[i - 1] + 4;
+            hpMaximum[i] = hpMaximum[i - 1] + i + 2;
     }
 };
 
@@ -55,10 +55,10 @@ public:
         name = "Light";
         baseAttack = 3;
         baseDefense = 4;
-        baseHP = 18;
+        baseHP = 19;
         hpMaximum[1] = baseHP;
         for (int i = 2; i <= 10; i++)
-            hpMaximum[i] = hpMaximum[i - 1] + i - 1;
+            hpMaximum[i] = hpMaximum[i - 1] + i + 2;
     }
 };
 
@@ -70,10 +70,10 @@ public:
         name = "Dark";
         baseAttack = 4;
         baseDefense = 3;
-        baseHP = 18;
+        baseHP = 19;
         hpMaximum[1] = baseHP;
         for (int i = 2; i <= 10; i++)
-            hpMaximum[i] = hpMaximum[i - 1] + 3;
+            hpMaximum[i] = hpMaximum[i - 1] + i + 1;
     }
 };
 #endif

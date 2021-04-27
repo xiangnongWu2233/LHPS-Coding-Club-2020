@@ -6,8 +6,8 @@
 #include <ctime>
 #include <cmath>
 #include "game.h"
-#include "elementpack/element.h"
 #include "elementpack/baseelement.h"
+#include "elementpack/mutatedelement.h"
 using namespace std;
 
 player::~player()
@@ -20,7 +20,7 @@ void player::initialize(string n, int i, string e) //initialize each players
     name = n;
     id = i;
     hpRestore = 1;
-    energy = 0;
+    energy = 2;
     level = 1;
     if (e == "1")
         ele = new water();
@@ -32,6 +32,8 @@ void player::initialize(string n, int i, string e) //initialize each players
         ele = new light();
     else if (e == "5")
         ele = new dark();
+    ele->elementLevel = 1;
+    ele->id = i;
     attack = ele->baseAttack;
     defense = ele->baseDefense;
     hp = ele->baseHP;
@@ -80,11 +82,16 @@ void player::turn()
 
 void player::upgrade()
 {
-    if (energy >= level * 2 - 1)
+    if (energy >= level * 2 + 1)
     {
-        energy -= level * 2 - 1;
+        energy -= level * 2 + 1;
         level++;
         printf("Upgrade! \n\n");
+        sleep(1);
+        printf("HP + %d\n", int(ele->hpMaximum[level] / 4));
+        hp += int(ele->hpMaximum[level] / 4);
+        if (hp > ele->hpMaximum[level])
+            hp = ele->hpMaximum[level];
         sleep(1);
         printf("Choose to upgrade: \n");
         printf("1. Attack %d+1\n2.Defense %d+1\n", attack, defense);
@@ -109,10 +116,10 @@ void player::upgrade()
             defense++;
         if (choice == "3")
             hpRestore++;
-        if (level >= 4 && ele->elementLevel == 1)
+        if (level >= 3 && ele->elementLevel == 1)
         {
             int coin = rand() % 100 + 1;
-            if (coin >= 30)
+            if (coin >= 50 - 10 * (level - 3))
                 mutate();
         }
     }
@@ -164,9 +171,9 @@ void player::mutate()
             cin >> choice;
         }
         if (choice == "1")
-            ele = new ice(id);
+            ele = new ice();
         else
-            ele = new wind(id);
+            ele = new wind();
     }
 
     if (ele->name == "Fire")
@@ -180,9 +187,9 @@ void player::mutate()
             cin >> choice;
         }
         if (choice == "1")
-            ele = new bomb(id);
+            ele = new bomb();
         else
-            ele = new thunder(id);
+            ele = new thunder();
     }
 
     if (ele->name == "Grass")
@@ -196,9 +203,9 @@ void player::mutate()
             cin >> choice;
         }
         if (choice == "1")
-            ele = new earth(id);
+            ele = new earth();
         else
-            ele = new poison(id);
+            ele = new poison();
     }
 
     if (ele->name == "Light")
@@ -212,9 +219,9 @@ void player::mutate()
             cin >> choice;
         }
         if (choice == "1")
-            ele = new divine(id);
+            ele = new divine();
         else
-            ele = new spirit(id);
+            ele = new spirit();
     }
 
     if (ele->name == "Dark")
@@ -228,9 +235,10 @@ void player::mutate()
             cin >> choice;
         }
         if (choice == "1")
-            ele = new demon(id);
+            ele = new demon();
         else
-            ele = new ghost(id);
+            ele = new ghost();
     }
+    ele->id = id;
     sleep(1);
 }

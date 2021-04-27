@@ -3,10 +3,11 @@
 #include <cstring>
 #include <unistd.h>
 #include "../../game.h"
-#include "../element.h"
+#include "../baseelement.h"
+#include "../mutatedelement.h"
 using namespace std;
 
-demon::demon(int i)
+demon::demon() : dark()
 {
     name = "Demon";
     skillNum = 3;
@@ -35,12 +36,12 @@ void demon::ultimate()
                 if (players[i].hp > players[id].hp)
                 {
                     printf("Curse!\n");
-                    players[i].receiveDamage(id, players[id].attack * 2 + players[i].defense);
+                    players[i].receiveDamage(id, players[id].attack * 2);
                 }
                 else
                 {
                     printf("Pain!\n");
-                    players[i].receiveDamage(id, players[id].attack + players[id].level);
+                    players[i].receiveDamage(id, players[id].attack);
                 }
             }
         sigil = 0;
