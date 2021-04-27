@@ -38,6 +38,6 @@ void bomb::ultimate()
     }
     sleep(2);
     printf("Devastate!!!\n");
-    players[stoi(t)].receiveDamage(id, int((players[stoi(t)].ele->hpMaximum[players[stoi(t)].level] - players[stoi(t)].hp) / 3));
+    players[stoi(t)].receiveDamage(id, 8 + int((players[stoi(t)].ele->hpMaximum[players[stoi(t)].level] - players[stoi(t)].hp) / 3));
     sleep(1);
 }
