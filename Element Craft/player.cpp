@@ -131,7 +131,6 @@ void player::gainEnergy(int amount)
     energy += amount;
     if (energy > ele->energyMaximum[level])
         energy = ele->energyMaximum[level];
-    upgrade();
 }
 
 void player::restoreHP(int amount)
