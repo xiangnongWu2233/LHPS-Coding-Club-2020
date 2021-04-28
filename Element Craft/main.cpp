@@ -70,9 +70,8 @@ int main()
         for (int i = 1; i <= n; i++)
             if (players[i].hp > 0)
             {
-                players[i].restore(players[i].hpRestore);
-                if (players[i].hp > players[i].ele->hpMaximum[players[i].level])
-                    players[i].hp = players[i].ele->hpMaximum[players[i].level];
+                players[i].restoreHP(players[i].hpRestore);
+                players[i].gainExp(1);
             }
         sleep(1);
         system("clear");

@@ -13,7 +13,10 @@ public:
         baseHP = 15;
         hpMaximum[1] = baseHP;
         for (int i = 2; i <= 10; i++)
-            hpMaximum[i] = hpMaximum[i - 1] + i + 3;
+            hpMaximum[i] = hpMaximum[i - 1] + i + 5;
+        energyMaximum[1] = 2;
+        for (int i = 2; i <= 10; i++)
+            energyMaximum[i] = energyMaximum[i - 1] + 3;
     }
 };
 
@@ -28,7 +31,10 @@ public:
         baseHP = 14;
         hpMaximum[1] = baseHP;
         for (int i = 2; i <= 10; i++)
-            hpMaximum[i] = hpMaximum[i - 1] + i + 1;
+            hpMaximum[i] = hpMaximum[i - 1] + i + 2;
+        energyMaximum[1] = 2;
+        for (int i = 2; i <= 10; i++)
+            energyMaximum[i] = energyMaximum[i - 1] + 2;
     }
 };
 
@@ -43,7 +49,10 @@ public:
         baseHP = 20;
         hpMaximum[1] = baseHP;
         for (int i = 2; i <= 10; i++)
-            hpMaximum[i] = hpMaximum[i - 1] + i + 2;
+            hpMaximum[i] = hpMaximum[i - 1] + i + 4;
+        energyMaximum[1] = 2;
+        for (int i = 2; i <= 10; i++)
+            energyMaximum[i] = energyMaximum[i - 1] + 3;
     }
 };
 
@@ -58,7 +67,10 @@ public:
         baseHP = 19;
         hpMaximum[1] = baseHP;
         for (int i = 2; i <= 10; i++)
-            hpMaximum[i] = hpMaximum[i - 1] + i + 2;
+            hpMaximum[i] = hpMaximum[i - 1] + i + 3;
+        energyMaximum[1] = 2;
+        for (int i = 2; i <= 10; i++)
+            energyMaximum[i] = energyMaximum[i - 1] + 2;
     }
 };
 
@@ -73,7 +85,10 @@ public:
         baseHP = 19;
         hpMaximum[1] = baseHP;
         for (int i = 2; i <= 10; i++)
-            hpMaximum[i] = hpMaximum[i - 1] + i + 1;
+            hpMaximum[i] = hpMaximum[i - 1] + i + 3;
+        energyMaximum[1] = 2;
+        for (int i = 2; i <= 10; i++)
+            energyMaximum[i] = energyMaximum[i - 1] + 3;
     }
 };
 #endif

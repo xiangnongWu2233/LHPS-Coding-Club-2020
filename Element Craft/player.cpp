@@ -21,6 +21,7 @@ void player::initialize(string n, int i, string e) //initialize each players
     id = i;
     hpRestore = 1;
     energy = 2;
+    exp = 0;
     level = 1;
     if (e == "1")
         ele = new water();
@@ -41,7 +42,7 @@ void player::initialize(string n, int i, string e) //initialize each players
 
 void player::show()
 {
-    printf("%d %-8s :   Element %-8s Attack %-3d  Defense %-3d  HP  %-3d  Level %d  Energy %d\n", id, name.c_str(), ele->name.c_str(), attack, defense, hp, level, energy);
+    printf("%d %-8s : Element %-6s Attack %-2d  Defense %-2d  HP  %-2d  EXP %-2d Level %d  Energy%d\n", id, name.c_str(), ele->name.c_str(), attack, defense, hp, exp, level, energy);
 }
 
 void player::turn()
@@ -56,42 +57,20 @@ void player::turn()
     ele->normalAttack();
     if (dn == n - 1)
         return;
-    if (ele->elementLevel > 1)
-    {
-        while (energy >= ele->ultimateCost)
-        {
-            sleep(1);
-            printf("Ultimate Ready! 1. Use 2. Skip\n");
-            string choice;
-            cin >> choice;
-            while (choice != "1" && choice != "2")
-            {
-                printf("Please enter a valid option! \n");
-                sleep(2);
-                cin >> choice;
-            }
-            if (choice == "1")
-                ele->ultimate();
-            else
-                break;
-            if (dn == n - 1)
-                return;
-        }
-    }
+    /*if (ele->elementLevel > 1)
+        ele->skill();*/
 }
 
 void player::upgrade()
 {
-    if (energy >= level * 2 + 1)
+    if (exp >= level * 2 + 1)
     {
-        energy -= level * 2 + 1;
+        exp -= level * 2 + 1;
         level++;
         printf("Upgrade! \n\n");
         sleep(1);
-        printf("HP + %d\n", int(ele->hpMaximum[level] / 4));
-        hp += int(ele->hpMaximum[level] / 4);
-        if (hp > ele->hpMaximum[level])
-            hp = ele->hpMaximum[level];
+        restoreHP(int(ele->hpMaximum[level] / 4));
+        gainEnergy(level);
         sleep(1);
         printf("Choose to upgrade: \n");
         printf("1. Attack %d+1\n2.Defense %d+1\n", attack, defense);
@@ -135,21 +114,32 @@ void player::receiveDamage(int from, int damage)
         dn++;
         printf("\033[31m\033[40mKilled %d %s!\n\033[0m", id, name.c_str());
         sleep(1);
-        players[from].gainEnergy(players[from].level + 4);
+        players[from].gainExp(players[from].level + 4);
     }
+}
+
+void player::gainExp(int amount)
+{
+    printf("%d %s EXP + %d!\n", id, name.c_str(), amount);
+    exp += amount;
+    upgrade();
 }
 
 void player::gainEnergy(int amount)
 {
-    printf("%d %s gains %d energies!\n", id, name.c_str(), amount);
+    printf("%d %s energy + %d!\n", id, name.c_str(), amount);
     energy += amount;
+    if (energy > ele->energyMaximum[level])
+        energy = ele->energyMaximum[level];
     upgrade();
 }
 
-void player::restore(int amount)
+void player::restoreHP(int amount)
 {
     printf("%d %s gains %d health!\n", id, name.c_str(), amount);
     hp += amount;
+    if (hp > ele->hpMaximum[level])
+        hp = ele->hpMaximum[level];
 }
 
 void player::mutate()

@@ -1,6 +1,7 @@
 #include <iostream>
 #include <cstdio>
 #include <cstring>
+#include <unistd.h>
 #include "../../game.h"
 #include "../baseelement.h"
 #include "../mutatedelement.h"
@@ -20,5 +21,8 @@ earth::earth() : grass()
 
 void earth::ultimate()
 {
-    printf("大地复苏");
+    printf("%d %s - %d energies! \n", id, players[id].name.c_str(), players[id].ele->ultimateCost);
+    players[id].energy -= players[id].ele->ultimateCost;
+    sleep(1);
+    printf("Spring renews the earth");
 }

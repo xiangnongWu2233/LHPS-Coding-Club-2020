@@ -9,28 +9,29 @@ class element
 public:
     string name, skillNames[101];
     int id, skillNum, elementLevel, ultimateCost;
-    int hpMaximum[11];
+    int hpMaximum[11], energyMaximum[11];
     int baseAttack, baseDefense, baseHP;
     void normalAttack();
     virtual void ultimate() {}
+    //virtual void skill() {}
 };
 
 class player
 {
 public:
     string name;
-    int id, hp, attack, defense, hpRestore, energy, level;
+    int id, hp, attack, defense, hpRestore, energy, level, exp;
     int lock;
     element *ele;
     ~player();
     void initialize(string n, int i, string e);
     void show();
     void turn();
-    void skill();
     void upgrade();
     void receiveDamage(int from, int damage);
+    void gainExp(int amount);
     void gainEnergy(int amount);
-    void restore(int amount);
+    void restoreHP(int amount);
     void mutate();
     void evolve();
 };
