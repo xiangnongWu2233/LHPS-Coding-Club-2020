@@ -7,8 +7,8 @@ using namespace std;
 class element
 {
 public:
-    string name, skillNames[101];
-    int id, skillNum, elementLevel, ultimateCost;
+    string name;
+    int id, skillNum, elementLevel;
     int hpMaximum[11], energyMaximum[11];
     int baseAttack, baseDefense, baseHP;
     void normalAttack();

@@ -21,8 +21,8 @@ demon::demon() : dark()
 
 void demon::ultimate()
 {
-    printf("%d %s - %d energy\n", id, players[id].name.c_str(), players[id].ele->ultimateCost);
-    players[id].energy -= players[id].ele->ultimateCost;
+    printf("%d %s - %d energy\n", id, players[id].name.c_str(), ultimateCost);
+    players[id].energy -= ultimateCost;
     sleep(1);
     printf("Sigil + 1\n");
     sigil++;

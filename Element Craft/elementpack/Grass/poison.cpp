@@ -20,5 +20,4 @@ poison::poison() : grass()
 
 void poison::ultimate()
 {
-    printf("毒气侵袭！");
 }

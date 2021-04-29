@@ -21,8 +21,10 @@ earth::earth() : grass()
 
 void earth::ultimate()
 {
-    printf("%d %s - %d energies! \n", id, players[id].name.c_str(), players[id].ele->ultimateCost);
-    players[id].energy -= players[id].ele->ultimateCost;
+    printf("%d %s - %d energies! \n", id, players[id].name.c_str(), ultimateCost);
+    players[id].energy -= ultimateCost;
     sleep(1);
-    printf("Spring renews the earth");
+    printf("Spring renews the earth!!!\n");
+    sleep(2);
+    players[id].restoreHP(int(2 / 3 * (players[id].ele->hpMaximum[players[id].level] - players[id].hp)));
 }

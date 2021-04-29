@@ -106,6 +106,9 @@ void player::upgrade()
 
 void player::receiveDamage(int from, int damage)
 {
+    damage -= defense;
+    if (damage <= 0)
+        damage = 1;
     printf("%d %s - %d\n", id, name.c_str(), damage);
     hp -= damage;
     cout << endl;

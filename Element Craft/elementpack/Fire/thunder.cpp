@@ -21,8 +21,8 @@ thunder::thunder() : fire()
 
 void thunder::ultimate()
 {
-    printf("%d %s - %d energies! \n", id, players[id].name.c_str(), players[id].ele->ultimateCost);
-    players[id].energy -= players[id].ele->ultimateCost;
+    printf("%d %s - %d energies! \n", id, players[id].name.c_str(), ultimateCost);
+    players[id].energy -= ultimateCost;
     sleep(1);
     printf("Tremendous Thunderbolt!!!\n");
     sleep(2);

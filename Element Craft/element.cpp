@@ -23,10 +23,6 @@ void element::normalAttack()
         sleep(2);
         cin >> t;
     }
-    int damage = players[id].attack - players[stoi(t)].defense;
-    if (damage <= 0)
-        damage = 1;
-
-    players[stoi(t)].receiveDamage(id, damage);
+    players[stoi(t)].receiveDamage(id, players[id].attack);
     players[id].gainEnergy(1);
 }

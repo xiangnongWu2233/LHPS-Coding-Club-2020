@@ -9,6 +9,7 @@
 class ice : public water
 {
 public:
+    int ultimateCost;
     ice();
     virtual void ultimate();
     //virtual void skill();
@@ -19,6 +20,7 @@ public:
 class wind : public water
 {
 public:
+    int ultimateCost;
     wind();
     virtual void ultimate();
     //virtual void skill();
@@ -29,6 +31,7 @@ public:
 class thunder : public fire
 {
 public:
+    int ultimateCost;
     thunder();
     virtual void ultimate();
     //virtual void skill();
@@ -37,14 +40,18 @@ public:
 class bomb : public fire
 {
 public:
+    int ultimateCost;
     bomb();
     virtual void ultimate();
-    //virtual void skill();
+    virtual void skill();
+    void torpedo();
+    void bombing();
 };
 
 class earth : public grass
 {
 public:
+    int ultimateCost;
     earth();
     virtual void ultimate();
     //virtual void skill();
@@ -53,6 +60,7 @@ public:
 class poison : public grass
 {
 public:
+    int ultimateCost;
     poison();
     virtual void ultimate();
     //virtual void skill();
@@ -61,6 +69,7 @@ public:
 class divine : public light
 {
 public:
+    int ultimateCost;
     divine();
     virtual void ultimate();
     //virtual void skill();
@@ -69,6 +78,7 @@ public:
 class spirit : public light
 {
 public:
+    int ultimateCost;
     spirit();
     virtual void ultimate();
     //virtual void skill();
@@ -77,6 +87,7 @@ public:
 class demon : public dark
 {
 public:
+    int ultimateCost;
     int sigil;
     demon();
     virtual void ultimate();
@@ -86,6 +97,7 @@ public:
 class ghost : public dark
 {
 public:
+    int ultimateCost;
     ghost();
     virtual void ultimate();
     //virtual void skill();
