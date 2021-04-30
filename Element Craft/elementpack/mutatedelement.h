@@ -12,7 +12,7 @@ public:
     int ultimateCost;
     ice();
     virtual void ultimate();
-    //virtual void skill();
+    virtual void skill();
     void freeze();
     void frostStrike();
 };
@@ -23,7 +23,7 @@ public:
     int ultimateCost;
     wind();
     virtual void ultimate();
-    //virtual void skill();
+    virtual void skill();
     void cyclone();
     void Hurricane();
 };
@@ -34,7 +34,7 @@ public:
     int ultimateCost;
     thunder();
     virtual void ultimate();
-    //virtual void skill();
+    virtual void skill();
 };
 
 class bomb : public fire
@@ -44,8 +44,6 @@ public:
     bomb();
     virtual void ultimate();
     virtual void skill();
-    void torpedo();
-    void bombing();
 };
 
 class earth : public grass
@@ -54,7 +52,7 @@ public:
     int ultimateCost;
     earth();
     virtual void ultimate();
-    //virtual void skill();
+    virtual void skill();
 };
 
 class poison : public grass
@@ -63,7 +61,7 @@ public:
     int ultimateCost;
     poison();
     virtual void ultimate();
-    //virtual void skill();
+    virtual void skill();
 };
 
 class divine : public light
@@ -72,7 +70,7 @@ public:
     int ultimateCost;
     divine();
     virtual void ultimate();
-    //virtual void skill();
+    virtual void skill();
 };
 
 class spirit : public light
@@ -81,7 +79,7 @@ public:
     int ultimateCost;
     spirit();
     virtual void ultimate();
-    //virtual void skill();
+    virtual void skill();
 };
 
 class demon : public dark
@@ -91,7 +89,7 @@ public:
     int sigil;
     demon();
     virtual void ultimate();
-    //virtual void skill();
+    virtual void skill();
 };
 
 class ghost : public dark
@@ -100,7 +98,7 @@ public:
     int ultimateCost;
     ghost();
     virtual void ultimate();
-    //virtual void skill();
+    virtual void skill();
 };
 
 #endif

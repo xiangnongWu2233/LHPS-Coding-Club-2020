@@ -4,16 +4,26 @@
 #include <ctime>
 using namespace std;
 
+class skill
+{
+public:
+    string name;
+    int CD;
+    int level;
+    virtual void use();
+};
+
 class element
 {
 public:
     string name;
-    int id, skillNum, elementLevel;
+    int id, elementLevel;
     int hpMaximum[11], energyMaximum[11];
     int baseAttack, baseDefense, baseHP;
+
     void normalAttack();
     virtual void ultimate() {}
-    //virtual void skill() {}
+    virtual void skill() {}
 };
 
 class player

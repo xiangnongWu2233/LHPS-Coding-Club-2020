@@ -19,6 +19,10 @@ wind::wind() : water()
     ultimateCost = 5;
 }
 
+void wind::skill()
+{
+}
+
 void wind::ultimate()
 {
     printf("%d %s - %d energies! \n", id, players[id].name.c_str(), ultimateCost);
