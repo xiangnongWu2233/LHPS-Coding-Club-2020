@@ -98,8 +98,8 @@ void player::upgrade()
         if (level >= 3 && ele->elementLevel == 1)
         {
             int coin = rand() % 100 + 1;
-            if (coin >= 50 - 10 * (level - 3))
-                mutate();
+            //if (coin >= 50 - 10 * (level - 3))
+            //mutate();
         }
     }
 }
@@ -140,11 +140,9 @@ void player::restoreHP(int amount)
 {
     printf("%d %s gains %d health!\n", id, name.c_str(), amount);
     hp += amount;
-    if (hp > ele->hpMaximum[level])
-        hp = ele->hpMaximum[level];
 }
 
-void player::mutate()
+/*void player::mutate()
 {
     printf("Element mutated! ");
     sleep(1);
@@ -233,4 +231,4 @@ void player::mutate()
     }
     ele->id = id;
     sleep(1);
-}
+}*/

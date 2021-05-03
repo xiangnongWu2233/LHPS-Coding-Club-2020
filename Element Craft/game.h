@@ -2,15 +2,14 @@
 #define GAME_H
 #include <cstring>
 #include <ctime>
+#include <map>
 using namespace std;
 
 class skill
 {
 public:
     string name;
-    int CD;
-    int level;
-    virtual void use();
+    int level, CD;
 };
 
 class element
@@ -18,12 +17,13 @@ class element
 public:
     string name;
     int id, elementLevel;
-    int hpMaximum[11], energyMaximum[11];
+    int energyMaximum[11];
     int baseAttack, baseDefense, baseHP;
-
     void normalAttack();
+    virtual void skill();
+    virtual void primaryAbility(){};
+    virtual void secondaryAbility(){};
     virtual void ultimate() {}
-    virtual void skill() {}
 };
 
 class player

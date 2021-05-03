@@ -9,21 +9,11 @@
 
 #include "elementpack/baseelement.h"
 #include "elementpack/mutatedelement.h"
-
-#include "elementpack/Water/ice.cpp"
-#include "elementpack/Water/wind.cpp"
-
-#include "elementpack/Fire/bomb.cpp"
-#include "elementpack/Fire/thunder.cpp"
-
-#include "elementpack/Grass/earth.cpp"
-#include "elementpack/Grass/poison.cpp"
-
-#include "elementpack/Light/divine.cpp"
-#include "elementpack/Light/spirit.cpp"
-
-#include "elementpack/Dark/demon.cpp"
-#include "elementpack/Dark/ghost.cpp"
+#include "elementpack/water/water.cpp"
+#include "elementpack/fire/fire.cpp"
+#include "elementpack/grass/grass.cpp"
+#include "elementpack/light/light.cpp"
+#include "elementpack/dark/dark.cpp"
 
 using namespace std;
 

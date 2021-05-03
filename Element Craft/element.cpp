@@ -2,6 +2,7 @@
 #include <cstdio>
 #include <cstdlib>
 #include <unistd.h>
+#include <ctime>
 #include "game.h"
 using namespace std;
 
@@ -25,4 +26,16 @@ void element::normalAttack()
     }
     players[stoi(t)].receiveDamage(id, players[id].attack);
     players[id].gainEnergy(1);
+}
+
+void element::skill()
+{
+    srand(time(0));
+    int coin = rand() % 2 + 1;
+    if (coin == 1)
+        primaryAbility();
+    else
+        secondaryAbility();
+    cout << endl;
+    sleep(1);
 }
