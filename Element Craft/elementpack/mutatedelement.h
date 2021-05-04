@@ -31,45 +31,35 @@ public:
 class thunder : public fire
 {
 public:
-    int ultimateCost;
     thunder();
-    virtual void ultimate();
     virtual void skill();
 };
 
 class bomb : public fire
 {
 public:
-    int ultimateCost;
     bomb();
-    virtual void ultimate();
     virtual void skill();
 };
 
 class earth : public grass
 {
 public:
-    int ultimateCost;
     earth();
-    virtual void ultimate();
     virtual void skill();
 };
 
 class poison : public grass
 {
 public:
-    int ultimateCost;
     poison();
-    virtual void ultimate();
     virtual void skill();
 };
 
 class divine : public light
 {
 public:
-    int ultimateCost;
     divine();
-    virtual void ultimate();
     virtual void skill();
 };
 

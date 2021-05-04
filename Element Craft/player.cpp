@@ -15,10 +15,10 @@ player::~player()
     delete ele;
 }
 
-void player::initialize(string n, int i, string e) //initialize each players
+void player::initialize(string n, int id, string e) //initialize each players
 {
     name = n;
-    id = i;
+    user = id;
     hpRestore = 1;
     energy = 2;
     exp = 0;
@@ -34,7 +34,7 @@ void player::initialize(string n, int i, string e) //initialize each players
     else if (e == "5")
         ele = new dark();
     ele->elementLevel = 1;
-    ele->id = i;
+    ele->user = id;
     attack = ele->baseAttack;
     defense = ele->baseDefense;
     hp = ele->baseHP;
@@ -42,18 +42,18 @@ void player::initialize(string n, int i, string e) //initialize each players
 
 void player::show()
 {
-    printf("%d %-8s : Element %-6s Attack %-2d  Defense %-2d  HP  %-2d  EXP %-2d Level %d  Energy%d\n", id, name.c_str(), ele->name.c_str(), attack, defense, hp, exp, level, energy);
+    printf("%d %-8s : Element %-6s Attack %-2d  Defense %-2d  HP  %-2d  EXP %-2d Level %d  Energy%d\n", user, name.c_str(), ele->name.c_str(), attack, defense, hp, exp, level, energy);
 }
 
 void player::turn()
 {
     if (lock >= 1)
     {
-        printf("%d %s can't move!!!\n", id, name.c_str());
+        printf("%d %s can't move!!!\n", user, name.c_str());
         lock--;
         return;
     }
-    printf("It's %d %s's turn to attack! ", id, name.c_str());
+    printf("It's %d %s's turn to attack! ", user, name.c_str());
     ele->normalAttack();
     if (dn == n - 1)
         return;
@@ -109,13 +109,13 @@ void player::receiveDamage(int from, int damage)
     damage -= defense;
     if (damage <= 0)
         damage = 1;
-    printf("%d %s - %d\n", id, name.c_str(), damage);
+    printf("%d %s - %d\n", user, name.c_str(), damage);
     hp -= damage;
     cout << endl;
     if (hp <= 0)
     {
         dn++;
-        printf("\033[31m\033[40mKilled %d %s!\n\033[0m", id, name.c_str());
+        printf("\033[31m\033[40mKilled %d %s!\n\033[0m", user, name.c_str());
         sleep(1);
         players[from].gainExp(players[from].level + 4);
     }
@@ -123,14 +123,14 @@ void player::receiveDamage(int from, int damage)
 
 void player::gainExp(int amount)
 {
-    printf("%d %s EXP + %d!\n", id, name.c_str(), amount);
+    printf("%d %s EXP + %d!\n", user, name.c_str(), amount);
     exp += amount;
     upgrade();
 }
 
 void player::gainEnergy(int amount)
 {
-    printf("%d %s energy + %d!\n", id, name.c_str(), amount);
+    printf("%d %s energy + %d!\n", user, name.c_str(), amount);
     energy += amount;
     if (energy > ele->energyMaximum[level])
         energy = ele->energyMaximum[level];
@@ -138,7 +138,7 @@ void player::gainEnergy(int amount)
 
 void player::restoreHP(int amount)
 {
-    printf("%d %s gains %d health!\n", id, name.c_str(), amount);
+    printf("%d %s gains %d health!\n", user, name.c_str(), amount);
     hp += amount;
 }
 

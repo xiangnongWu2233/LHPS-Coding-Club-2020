@@ -9,32 +9,31 @@ class skill
 {
 public:
     string name;
-    int level, CD;
+    int level, CD, upgradeCost;
+    int user;
+    virtual void use() {}
 };
 
 class element
 {
 public:
     string name;
-    int id, elementLevel;
-    int energyMaximum[11];
+    int user, elementLevel;
+    int energyMaximum[11], hpMaximum[11];
     int baseAttack, baseDefense, baseHP;
     void normalAttack();
     virtual void skill();
-    virtual void primaryAbility(){};
-    virtual void secondaryAbility(){};
-    virtual void ultimate() {}
 };
 
 class player
 {
 public:
     string name;
-    int id, hp, attack, defense, hpRestore, energy, level, exp;
+    int user, hp, attack, defense, hpRestore, energy, level, exp;
     int lock;
     element *ele;
     ~player();
-    void initialize(string n, int i, string e);
+    void initialize(string n, int id, string e);
     void show();
     void turn();
     void upgrade();
