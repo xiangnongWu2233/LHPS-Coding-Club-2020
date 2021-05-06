@@ -1,6 +1,7 @@
 #include <iostream>
+#include <cstdio>
 #include "../../game.h"
-#include "../baseelement.h"
+#include "lightElement.h"
 
 using namespace std;
 

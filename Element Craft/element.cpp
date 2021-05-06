@@ -30,7 +30,4 @@ void element::normalAttack()
 
 void element::skill()
 {
-    srand(time(0));
-    int coin = rand() % 2 + 1;
-    sleep(1);
 }

@@ -5,13 +5,16 @@
 #include <map>
 using namespace std;
 
-class skill
+class status
 {
 public:
-    string name;
-    int level, CD, upgradeCost;
-    int user;
-    virtual void use() {}
+    int trial, frozen, inAir;
+    status()
+    {
+        trial = 0;
+        frozen = 0;
+        inAir = 0;
+    }
 };
 
 class element
@@ -29,6 +32,7 @@ class player
 {
 public:
     string name;
+    status status_bar;
     int user, hp, attack, defense, hpRestore, energy, level, exp;
     int lock;
     element *ele;

@@ -7,13 +7,30 @@
 #include "element.cpp"
 #include "player.cpp"
 
-#include "elementpack/baseelement.h"
-#include "elementpack/mutatedelement.h"
-#include "elementpack/water/water.cpp"
-#include "elementpack/fire/fire.cpp"
-#include "elementpack/grass/grass.cpp"
-#include "elementpack/light/light.cpp"
-#include "elementpack/dark/dark.cpp"
+#include "elementpack/WATER/waterElement.h"
+#include "elementpack/WATER/water.cpp"
+#include "elementpack/WATER/ice.cpp"
+#include "elementpack/WATER/wind.cpp"
+
+#include "elementpack/FIRE/fireElement.h"
+#include "elementpack/FIRE/fire.cpp"
+#include "elementpack/FIRE/thunder.cpp"
+#include "elementpack/FIRE/bomb.cpp"
+
+#include "elementpack/GRASS/grassElement.h"
+#include "elementpack/GRASS/grass.cpp"
+#include "elementpack/GRASS/earth.cpp"
+#include "elementpack/GRASS/poison.cpp"
+
+#include "elementpack/LIGHT/lightElement.h"
+#include "elementpack/LIGHT/light.cpp"
+#include "elementpack/LIGHT/divine.cpp"
+#include "elementpack/LIGHT/spirit.cpp"
+
+#include "elementpack/DARK/darkElement.h"
+#include "elementpack/DARK/dark.cpp"
+#include "elementpack/DARK/demon.cpp"
+#include "elementpack/DARK/ghost.cpp"
 
 using namespace std;
 

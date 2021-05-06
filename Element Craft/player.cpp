@@ -6,8 +6,12 @@
 #include <ctime>
 #include <cmath>
 #include "game.h"
-#include "elementpack/baseelement.h"
-#include "elementpack/mutatedelement.h"
+
+#include "elementpack/WATER/waterElement.h"
+#include "elementpack/FIRE/fireElement.h"
+#include "elementpack/GRASS/grassElement.h"
+#include "elementpack/LIGHT/lightElement.h"
+#include "elementpack/DARK/darkElement.h"
 using namespace std;
 
 player::~player()

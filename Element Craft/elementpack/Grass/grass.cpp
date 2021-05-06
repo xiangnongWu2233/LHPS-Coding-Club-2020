@@ -1,6 +1,6 @@
 #include <iostream>
 #include "../../game.h"
-#include "../baseelement.h"
+#include "grassElement.h"
 
 using namespace std;
 
@@ -13,8 +13,4 @@ grass::grass()
     energyMaximum[1] = 2;
     for (int i = 2; i <= 10; i++)
         energyMaximum[i] = energyMaximum[i - 1] + 3;
-}
-
-void grass::primaryAbility()
-{
 }
