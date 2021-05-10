@@ -22,7 +22,7 @@ void water::flow()
     for (int i = 1; i <= n; i++)
     {
         if (players[i].hp > 0 && i != user)
-            players[i].receiveDamage(user, players[i].level);
+            players[i].receiveDamage(user, players[user].level);
     }
     sleep(1);
 }

@@ -57,7 +57,8 @@ void player::turn()
         lock--;
         return;
     }
-    printf("It's %d %s's turn to attack! ", user, name.c_str());
+    printf("Choose your target");
+
     ele->normalAttack();
     if (dn == n - 1)
         return;

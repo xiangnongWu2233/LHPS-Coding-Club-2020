@@ -22,20 +22,22 @@ void ice::skill()
     coin = rand() % 100 + 1;
     if (coin >= 70)
     {
-        }
+    }
     if (players[user].energy >= 4)
         glacier();
 }
 
 void ice::freeze(int target)
 {
+
     printf("Freeze %d %s !\n", target, players[target].name);
     if (players[target].status_bar.trial == 0)
-        players[target].status_bar.frozen = 2;
+        players[target].status_bar.frozen = 1;
 }
 
 void ice::frostStrike()
 {
+    printf("Frost ");
 }
 
 void ice::glacier()

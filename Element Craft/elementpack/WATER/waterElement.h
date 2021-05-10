@@ -18,7 +18,7 @@ class ice : public water
 public:
     ice();
     virtual void skill();
-    void freeze(int target);
+    void freeze(int target, int time);
     void frostStrike();
     void glacier();
 };
