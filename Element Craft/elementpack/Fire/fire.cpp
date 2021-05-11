@@ -10,7 +10,9 @@ fire::fire()
     baseAttack = 5;
     baseDefense = 2;
     baseHP = 14;
-    energyMaximum[1] = 2;
-    for (int i = 2; i <= 10; i++)
-        energyMaximum[i] = energyMaximum[i - 1] + 2;
+    hpMaximum[1] = baseHP;
+    for (int i = 2; i <= 5; i++)
+        hpMaximum[i] = hpMaximum[i - 1] + i - 1;
+    for (int i = 6; i <= 10; i++)
+        hpMaximum[i] = hpMaximum[i - 1] + 3;
 }

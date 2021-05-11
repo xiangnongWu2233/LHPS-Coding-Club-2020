@@ -16,30 +16,29 @@ wind::wind() : water()
     printf("\033[0m\n");
 }
 
-void wind::skill()
+void wind::skill(int target)
 {
-    if (players[user].energy >= 4)
-        stormrage();
 }
 
-void wind::stormrage()
+void wind::cyclone(int target)
+{
+    printf("Cyclone!\n");
+    printf("%d %s + %d shield\n", user, players[user].name.c_str(), players[user].level);
+    players[user].status_bar.shield += 3;
+    players[target].receiveDamage(user, players[user].attack);
+}
+
+void wind::hurricane(int target)
+{
+    /*players[target].receiveDamage(user);
+    players*/
+}
+
+void wind::stormrage(int target)
 {
     printf("Stormrage!!!\n");
     sleep(2);
-    printf("Choose your target: \n");
-    string t;
-    for (int i = 1; i <= n; i++)
-        if (players[i].hp > 0 && i != user)
-            printf("%d %s\n", players[i].user, players[i].name.c_str());
-    cin >> t;
-    while (players[stoi(t)].hp <= 0 || stoi(t) == user)
-    {
-        printf("Please enter a valid target: \n");
-        sleep(2);
-        cin >> t;
-    }
-    players[stoi(t)].receiveDamage(user, players[user].defense + 3);
-    printf("%d %s in air!\n", stoi(t), players[stoi(t)].name.c_str());
-    players[stoi(t)].lock += 1;
+    players[target].receiveDamage(user, players[user].defense + 3);
+    printf("%d %s in air!\n", target, players[target].name.c_str());
     sleep(1);
 }

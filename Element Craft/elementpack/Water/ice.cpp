@@ -16,39 +16,55 @@ ice::ice() : water()
     printf("\033[0m\n");
 }
 
-void ice::skill()
+void ice::skill(int target)
 {
-    int coin;
-    coin = rand() % 100 + 1;
-    if (coin >= 70)
+    int coin = rand() % 100 + 1;
+    if (coin <= 40)
+        freeze(target, 1);
+    else if (coin > 40 && coin <= 60)
     {
+        int t = 0;
+        for (int i = first, cnt = 1; cnt <= n - dn; i = players[i].next, cnt++)
+            if (players[i].status_bar.frozen > 0 && i != user)
+            {
+                t = 1;
+                break;
+            }
+        if (t == 1)
+            frostStrike(target);
     }
-    if (players[user].energy >= 4)
+    else if (coin > 60 && coin <= 80)
         glacier();
+    sleep(1);
 }
 
-void ice::freeze(int target)
+void ice::freeze(int target, int time)
 {
 
-    printf("Freeze %d %s !\n", target, players[target].name);
+    printf("Freeze %d %s !\n", target, players[target].name.c_str());
     if (players[target].status_bar.trial == 0)
-        players[target].status_bar.frozen = 1;
+        players[target].status_bar.frozen += time;
 }
 
-void ice::frostStrike()
+void ice::frostStrike(int target)
 {
-    printf("Frost ");
+    printf("Frost-Strike!\n");
+    for (int i = first, cnt = 1; cnt <= n - dn; i = players[i].next, cnt++)
+    {
+        if (players[i].status_bar.frozen > 0 && i != user)
+            players[i].receiveDamage(user, players[user].level + players[user].attack);
+    }
 }
 
 void ice::glacier()
 {
     printf("Glacier!!!\n");
     sleep(2);
-    for (int i = 1; i <= n; i++)
+    for (int i = first, cnt = 1; cnt <= n - dn; i = players[i].next, cnt++)
         if (players[i].hp > 0 && i != user)
         {
-            freeze(i);
-            players[i].receiveDamage(user, players[user].level);
+            freeze(i, 3);
+            players[i].receiveDamage(user, 3 + players[user].level);
         }
     sleep(1);
 }

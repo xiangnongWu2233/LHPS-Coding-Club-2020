@@ -24,7 +24,6 @@ void player::initialize(string n, int id, string e) //initialize each players
     name = n;
     user = id;
     hpRestore = 1;
-    energy = 2;
     exp = 0;
     level = 1;
     if (e == "1")
@@ -46,20 +45,55 @@ void player::initialize(string n, int id, string e) //initialize each players
 
 void player::show()
 {
-    printf("%d %-8s : Element %-6s Attack %-2d  Defense %-2d  HP  %-2d  EXP %-2d Level %d  Energy%d\n", user, name.c_str(), ele->name.c_str(), attack, defense, hp, exp, level, energy);
+    printf("%d %-8s : Element %-6s Attack %-2d  Defense %-2d  HP  %-2d  EXP %-2d Level %d\n", user, name.c_str(), ele->name.c_str(), attack, defense, hp, exp, level);
+}
+
+void player::showStatus(int mode)
+{
+    if (mode == 1) //control
+    {
+        printf("%d %s ", user, name.c_str());
+        if (status_bar.trial > 0)
+        {
+            printf("In trial!");
+            status_bar.trial -= 1;
+        }
+        else if (status_bar.frozen > 0)
+        {
+            printf("Frozen!");
+            status_bar.frozen -= 1;
+        }
+        else if (status_bar.inAir > 0)
+        {
+            printf("In Air!");
+            status_bar.inAir -= 1;
+        }
+        cout << endl;
+    }
 }
 
 void player::turn()
 {
-    if (lock >= 1)
+    if (status_bar.control == 1)
+        showStatus(1);
+    printf("Choose your target: \n");
+    for (int i = first, cnt = 1; cnt <= n - dn; i = players[i].next, cnt++)
+        if (i != user && players[i].user > 0)
+            printf("%d %s\n", i, players[i].name.c_str());
+    cout << endl;
+    string choice;
+    cin >> choice;
+    while (players[stoi(choice)].hp <= 0 || stoi(choice) == user)
     {
-        printf("%d %s can't move!!!\n", user, name.c_str());
-        lock--;
-        return;
+        if (stoi(choice) == user)
+            printf("Can't attack yourself!\n");
+        else
+            printf("Please enter a valid target!\n");
+        sleep(2);
+        cin >> choice;
     }
-    printf("Choose your target");
-
-    ele->normalAttack();
+    ele->normalAttack(stoi(choice));
+    ele->skill(stoi(choice));
     if (dn == n - 1)
         return;
     /*if (ele->elementLevel > 1)
@@ -74,8 +108,7 @@ void player::upgrade()
         level++;
         printf("Upgrade! \n\n");
         sleep(1);
-        restoreHP(int(ele->hpMaximum[level] / 4));
-        gainEnergy(level);
+        restoreHP(ele->hpMaximum[level] - hp);
         sleep(1);
         printf("Choose to upgrade: \n");
         printf("1. Attack %d+1\n2.Defense %d+1\n", attack, defense);
@@ -114,6 +147,17 @@ void player::receiveDamage(int from, int damage)
     damage -= defense;
     if (damage <= 0)
         damage = 1;
+    if (status_bar.shield > 0)
+    {
+        status_bar.shield -= damage;
+        if (status_bar.shield >= 0)
+            printf("%d %s shield remains: %d", user, name.c_str(), status_bar.shield);
+        return;
+        damage = -status_bar.shield;
+        status_bar.shield = 0;
+        printf("Shield broken!\n");
+        sleep(1);
+    }
     printf("%d %s - %d\n", user, name.c_str(), damage);
     hp -= damage;
     cout << endl;
@@ -121,6 +165,10 @@ void player::receiveDamage(int from, int damage)
     {
         dn++;
         printf("\033[31m\033[40mKilled %d %s!\n\033[0m", user, name.c_str());
+        players[last].next = next;
+        players[next].last = last;
+        if (user == first)
+            first = next;
         sleep(1);
         players[from].gainExp(players[from].level + 4);
     }
@@ -131,14 +179,6 @@ void player::gainExp(int amount)
     printf("%d %s EXP + %d!\n", user, name.c_str(), amount);
     exp += amount;
     upgrade();
-}
-
-void player::gainEnergy(int amount)
-{
-    printf("%d %s energy + %d!\n", user, name.c_str(), amount);
-    energy += amount;
-    if (energy > ele->energyMaximum[level])
-        energy = ele->energyMaximum[level];
 }
 
 void player::restoreHP(int amount)

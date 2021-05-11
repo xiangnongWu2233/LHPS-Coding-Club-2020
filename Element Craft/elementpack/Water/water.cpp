@@ -11,23 +11,27 @@ water::water()
     baseAttack = 2;
     baseDefense = 5;
     baseHP = 15;
-    energyMaximum[1] = 2;
-    for (int i = 2; i <= 10; i++)
-        energyMaximum[i] = energyMaximum[i - 1] + 3;
+    hpMaximum[1] = baseHP;
+    for (int i = 2; i <= 4; i++)
+        hpMaximum[i] = hpMaximum[i - 1] + i;
+    for (int i = 5; i <= 10; i++)
+        hpMaximum[i] = hpMaximum[i - 1] + 6;
+}
+
+void water::skill(int target)
+{
+    int coin = rand() % 100 + 1;
+    if (coin >= 40)
+        flow();
 }
 
 void water::flow()
 {
     printf("Flow!\n");
-    for (int i = 1; i <= n; i++)
+    for (int i = first, cnt = 1; cnt <= n - dn; i = players[i].next, cnt++)
     {
         if (players[i].hp > 0 && i != user)
             players[i].receiveDamage(user, players[user].level);
     }
     sleep(1);
-}
-
-void water::skill()
-{
-    flow();
 }

@@ -56,17 +56,22 @@ int main()
         printf("Choose your element: ");
         cin >> e;
         players[i].initialize(na, i, e);
+        players[i].last = i - 1;
+        players[i].next = i + 1;
         cout << endl;
     }
+    players[1].last = n;
+    players[n].next = 1;
+    first = 1;
     system("clear");
-    for (int i = 1; i <= n; i++)
+    for (int i = first, cnt = 1; cnt <= n - dn; i = players[i].next, cnt++)
         players[i].show();
     cout << endl;
     sleep(1);
     while (dn < n - 1)
     {
         Round++;
-        for (int i = 1; i <= n; i++)
+        for (int i = first, cnt = 1; cnt <= n - dn; i = players[i].next, cnt++)
         {
             if (players[i].hp <= 0)
                 continue;
@@ -74,7 +79,7 @@ int main()
             sleep(1);
             cout << endl;
         }
-        for (int i = 1; i <= n; i++)
+        for (int i = first, cnt = 1; cnt <= n - dn; i = players[i].next, cnt++)
             if (players[i].hp > 0)
             {
                 players[i].restoreHP(players[i].hpRestore);
@@ -82,7 +87,7 @@ int main()
             }
         sleep(1);
         system("clear");
-        for (int i = 1; i <= n; i++)
+        for (int i = first, cnt = 1; cnt <= n - dn; i = players[i].next, cnt++)
             if (players[i].hp > 0)
                 players[i].show();
         cout << endl;

@@ -9,17 +9,17 @@ class water : public element
 {
 public:
     water();
+    virtual void skill(int target);
     void flow();
-    virtual void skill();
 };
 
 class ice : public water
 {
 public:
     ice();
-    virtual void skill();
+    virtual void skill(int target);
     void freeze(int target, int time);
-    void frostStrike();
+    void frostStrike(int target);
     void glacier();
 };
 
@@ -27,10 +27,10 @@ class wind : public water
 {
 public:
     wind();
-    virtual void skill();
-    void cyclone();
-    void Hurricane();
-    void stormrage();
+    virtual void skill(int target);
+    void cyclone(int target);
+    void hurricane(int target);
+    void stormrage(int target);
 };
 
 #endif

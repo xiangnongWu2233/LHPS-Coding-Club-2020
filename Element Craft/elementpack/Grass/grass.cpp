@@ -10,7 +10,9 @@ grass::grass()
     baseAttack = 3;
     baseDefense = 3;
     baseHP = 20;
-    energyMaximum[1] = 2;
-    for (int i = 2; i <= 10; i++)
-        energyMaximum[i] = energyMaximum[i - 1] + 3;
+    hpMaximum[1] = baseHP;
+    for (int i = 2; i <= 6; i++)
+        hpMaximum[i] = hpMaximum[i - 1] + i;
+    for (int i = 7; i <= 10; i++)
+        hpMaximum[i] = hpMaximum[i - 1] + 6;
 }
