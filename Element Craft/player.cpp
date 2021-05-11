@@ -76,6 +76,8 @@ void player::turn()
 {
     if (status_bar.control == 1)
         showStatus(1);
+    printf("It's %d %s 's turn! ", user, name.c_str());
+    sleep(1);
     printf("Choose your target: \n");
     for (int i = first, cnt = 1; cnt <= n - dn; i = players[i].next, cnt++)
         if (i != user && players[i].user > 0)
