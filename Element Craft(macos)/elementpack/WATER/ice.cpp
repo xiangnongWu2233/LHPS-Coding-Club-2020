@@ -27,7 +27,7 @@ void ice::skill(int target)
     {
         int t = 0;
         for (int i = first, cnt = 1; cnt <= n - dn; i = players[i].next, cnt++)
-            if (i != user)
+            if (i != user && players[i].status_bar.frozen > 0)
             {
                 t = 1;
                 break;
@@ -44,7 +44,10 @@ void ice::freeze(int target, int time)
 
     printf("Freeze %d %s !\n", target, players[target].name.c_str());
     if (players[target].status_bar.trial == 0)
+    {
         players[target].status_bar.frozen += time;
+        players[target].status_bar.control = 1;
+    }
 }
 
 void ice::frostStrike(int target)

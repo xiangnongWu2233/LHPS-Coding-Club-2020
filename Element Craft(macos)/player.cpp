@@ -75,7 +75,10 @@ void player::showStatus(int mode)
 void player::turn()
 {
     if (status_bar.control == 1)
+    {
         showStatus(1);
+        return;
+    }
     printf("It's %d %s 's turn! ", user, name.c_str());
     sleep(1);
     printf("Choose your target: \n");
@@ -134,11 +137,11 @@ void player::upgrade()
             defense++;
         if (choice == "3")
             hpRestore++;
-        if (level >= 3 && ele->elementLevel == 1)
+        if (level >= 2 && ele->elementLevel == 1)
         {
             int coin = rand() % 100 + 1;
-            //if (coin >= 50 - 10 * (level - 3))
-            //mutate();
+            if (coin >= 50 - 10 * (level - 3))
+                mutate();
         }
     }
 }
@@ -188,7 +191,7 @@ void player::restoreHP(int amount)
     hp += amount;
 }
 
-/*void player::mutate()
+void player::mutate()
 {
     printf("Element mutated! ");
     sleep(1);
@@ -275,6 +278,6 @@ void player::restoreHP(int amount)
         else
             ele = new ghost();
     }
-    ele->id = id;
+    ele->user = user;
     sleep(1);
-}*/
+}

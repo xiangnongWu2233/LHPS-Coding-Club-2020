@@ -51,5 +51,7 @@ void wind::stormrage(int target)
     sleep(2);
     players[target].receiveDamage(user, players[user].defense + 3);
     printf("%d %s in air!\n", target, players[target].name.c_str());
+    if (players[target].status_bar.trial == 0 && players[target].status_bar.frozen == 0)
+        players[target].status_bar.inAir = 2;
     sleep(1);
 }
