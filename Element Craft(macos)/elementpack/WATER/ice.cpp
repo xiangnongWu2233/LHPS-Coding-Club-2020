@@ -19,13 +19,15 @@ ice::ice() : water()
 void ice::skill(int target)
 {
     int coin = rand() % 100 + 1;
-    if (coin <= 40)
+    if (coin <= 20)
+        normalAttack(target);
+    else if (coin > 20 && coin <= 40)
         freeze(target, 1);
     else if (coin > 40 && coin <= 60)
     {
         int t = 0;
         for (int i = first, cnt = 1; cnt <= n - dn; i = players[i].next, cnt++)
-            if (players[i].status_bar.frozen > 0 && i != user)
+            if (i != user)
             {
                 t = 1;
                 break;
@@ -35,7 +37,6 @@ void ice::skill(int target)
     }
     else if (coin > 60 && coin <= 80)
         glacier();
-    sleep(1);
 }
 
 void ice::freeze(int target, int time)
@@ -61,7 +62,7 @@ void ice::glacier()
     printf("Glacier!!!\n");
     sleep(2);
     for (int i = first, cnt = 1; cnt <= n - dn; i = players[i].next, cnt++)
-        if (players[i].hp > 0 && i != user)
+        if (i != user)
         {
             freeze(i, 3);
             players[i].receiveDamage(user, 3 + players[user].level);

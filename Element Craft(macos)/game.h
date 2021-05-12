@@ -29,7 +29,7 @@ public:
     int hpMaximum[11];
     int baseAttack, baseDefense, baseHP;
     void normalAttack(int target);
-    virtual void skill(int target){};
+    virtual void skill(int target);
 };
 
 class player

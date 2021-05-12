@@ -11,3 +11,8 @@ void element::normalAttack(int target)
     players[target].receiveDamage(user, players[user].attack);
     players[user].gainExp(1);
 }
+
+void element::skill(int target)
+{
+    normalAttack(target);
+}

@@ -18,20 +18,31 @@ wind::wind() : water()
 
 void wind::skill(int target)
 {
+    int coin = rand() % 100 + 1;
+    if (coin <= 10)
+        cyclone();
+    else if (coin > 10 && coin <= 40)
+        hurricane(target);
+    else if (coin > 40 && coin <= 70)
+        stormrage(target);
+    else if (coin > 70 && coin <= 80)
+        normalAttack(target);
 }
 
-void wind::cyclone(int target)
+void wind::cyclone()
 {
     printf("Cyclone!\n");
     printf("%d %s + %d shield\n", user, players[user].name.c_str(), players[user].level);
-    players[user].status_bar.shield += 3;
-    players[target].receiveDamage(user, players[user].attack);
+    players[user].status_bar.shield += 2;
 }
 
 void wind::hurricane(int target)
 {
-    /*players[target].receiveDamage(user);
-    players*/
+    players[target].receiveDamage(user, 1 + players[user].level);
+    if (players[target].last != user)
+        players[players[target].last].receiveDamage(user, 1 + players[user].level);
+    if (players[target].next != user)
+        players[players[target].next].receiveDamage(user, 1 + players[user].level);
 }
 
 void wind::stormrage(int target)

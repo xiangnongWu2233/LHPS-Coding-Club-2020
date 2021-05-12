@@ -28,7 +28,7 @@ class wind : public water
 public:
     wind();
     virtual void skill(int target);
-    void cyclone(int target);
+    void cyclone();
     void hurricane(int target);
     void stormrage(int target);
 };

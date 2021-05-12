@@ -21,7 +21,9 @@ water::water()
 void water::skill(int target)
 {
     int coin = rand() % 100 + 1;
-    if (coin >= 40)
+    if (coin <= 60)
+        normalAttack(target);
+    else if (coin > 60)
         flow();
 }
 
@@ -30,7 +32,7 @@ void water::flow()
     printf("Flow!\n");
     for (int i = first, cnt = 1; cnt <= n - dn; i = players[i].next, cnt++)
     {
-        if (players[i].hp > 0 && i != user)
+        if (i != user)
             players[i].receiveDamage(user, players[user].level);
     }
     sleep(1);

@@ -73,25 +73,20 @@ int main()
         Round++;
         for (int i = first, cnt = 1; cnt <= n - dn; i = players[i].next, cnt++)
         {
-            if (players[i].hp <= 0)
-                continue;
             players[i].turn();
             sleep(1);
             cout << endl;
         }
         for (int i = first, cnt = 1; cnt <= n - dn; i = players[i].next, cnt++)
-            if (players[i].hp > 0)
-            {
-                players[i].restoreHP(players[i].hpRestore);
-                players[i].gainExp(1);
-            }
+        {
+            players[i].restoreHP(players[i].hpRestore);
+            players[i].gainExp(1);
+        }
         sleep(1);
         system("clear");
         for (int i = first, cnt = 1; cnt <= n - dn; i = players[i].next, cnt++)
-            if (players[i].hp > 0)
-                players[i].show();
+            players[i].show();
         cout << endl;
-        sleep(1);
     }
     return 0;
 }

@@ -80,7 +80,7 @@ void player::turn()
     sleep(1);
     printf("Choose your target: \n");
     for (int i = first, cnt = 1; cnt <= n - dn; i = players[i].next, cnt++)
-        if (i != user && players[i].user > 0)
+        if (i != user)
             printf("%d %s\n", i, players[i].name.c_str());
     cout << endl;
     string choice;
@@ -94,7 +94,6 @@ void player::turn()
         sleep(2);
         cin >> choice;
     }
-    ele->normalAttack(stoi(choice));
     ele->skill(stoi(choice));
     if (dn == n - 1)
         return;
