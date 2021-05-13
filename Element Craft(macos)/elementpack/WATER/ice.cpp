@@ -37,14 +37,15 @@ void ice::skill(int target)
     }
     else if (coin > 60 && coin <= 80)
         glacier();
+    if (coin > 20 && coin <= 80)
+        players[user].gainExp(1);
 }
 
 void ice::freeze(int target, int time)
 {
-
-    printf("Freeze %d %s !\n", target, players[target].name.c_str());
     if (players[target].status_bar.trial == 0)
     {
+        printf("Freeze %d %s !\n", target, players[target].name.c_str());
         players[target].status_bar.frozen += time;
         players[target].status_bar.control = 1;
     }
@@ -56,7 +57,7 @@ void ice::frostStrike(int target)
     for (int i = first, cnt = 1; cnt <= n - dn; i = players[i].next, cnt++)
     {
         if (players[i].status_bar.frozen > 0 && i != user)
-            players[i].receiveDamage(user, players[user].level + players[user].attack);
+            players[i].receiveDamage(user, 2 + players[user].level * 2);
     }
 }
 
@@ -68,7 +69,7 @@ void ice::glacier()
         if (i != user)
         {
             freeze(i, 3);
-            players[i].receiveDamage(user, 3 + players[user].level);
+            players[i].receiveDamage(user, 4 + players[user].level);
         }
     sleep(1);
 }

@@ -68,6 +68,8 @@ void player::showStatus(int mode)
             printf("In Air!");
             status_bar.inAir -= 1;
         }
+        if (status_bar.trial == status_bar.frozen == status_bar.inAir == 0)
+            status_bar.control = 0;
         cout << endl;
     }
 }
@@ -144,13 +146,14 @@ void player::upgrade()
                 mutate();
         }
     }
+    cout << endl;
 }
 
 void player::receiveDamage(int from, int damage)
 {
     damage -= defense;
     if (damage <= 0)
-        damage = 1;
+        damage = 2;
     if (status_bar.shield > 0)
     {
         status_bar.shield -= damage;
@@ -160,6 +163,7 @@ void player::receiveDamage(int from, int damage)
         damage = -status_bar.shield;
         status_bar.shield = 0;
         printf("Shield broken!\n");
+        cout << endl;
         sleep(1);
     }
     printf("%d %s - %d\n", user, name.c_str(), damage);
@@ -189,6 +193,8 @@ void player::restoreHP(int amount)
 {
     printf("%d %s gains %d health!\n", user, name.c_str(), amount);
     hp += amount;
+    if (hp > ele->hpMaximum[level])
+        hp = ele->hpMaximum[level];
 }
 
 void player::mutate()

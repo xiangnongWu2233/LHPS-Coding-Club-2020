@@ -8,8 +8,10 @@ using namespace std;
 
 void element::normalAttack(int target)
 {
+    int t = players[target].hp;
     players[target].receiveDamage(user, players[user].attack);
-    players[user].gainExp(1);
+    if (t > players[target].hp)
+        players[user].gainExp(1);
 }
 
 void element::skill(int target)
