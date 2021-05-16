@@ -16,6 +16,7 @@ public:
     int sigil;
     demon();
     //virtual void skill();
+    void sixFoldcursing();
 };
 
 class ghost : public dark

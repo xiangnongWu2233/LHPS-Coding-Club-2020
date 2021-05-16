@@ -63,12 +63,20 @@ void player::showStatus(int mode)
             printf("Frozen!");
             status_bar.frozen -= 1;
         }
-        else if (status_bar.inAir > 0)
+        else if (status_bar.inAir > 0 || status_bar.stunned > 0)
         {
-            printf("In Air!");
-            status_bar.inAir -= 1;
+            if (status_bar.inAir > 0)
+            {
+                printf("In Air!");
+                status_bar.inAir -= 1;
+            }
+            else
+            {
+                printf("Stunned!");
+                status_bar.stunned -= 1;
+            }
         }
-        if (status_bar.trial == status_bar.frozen == status_bar.inAir == 0)
+        if (status_bar.trial == status_bar.frozen == status_bar.inAir == status_bar.stunned == 0)
             status_bar.control = 0;
         cout << endl;
     }
@@ -102,8 +110,6 @@ void player::turn()
     ele->skill(stoi(choice));
     if (dn == n - 1)
         return;
-    /*if (ele->elementLevel > 1)
-        ele->skill();*/
 }
 
 void player::upgrade()
@@ -142,7 +148,7 @@ void player::upgrade()
         if (level >= 2 && ele->elementLevel == 1)
         {
             int coin = rand() % 100 + 1;
-            if (coin >= 50 - 10 * (level - 3))
+            if (coin >= 40 - 10 * (level - 3))
                 mutate();
         }
     }
@@ -153,7 +159,7 @@ void player::receiveDamage(int from, int damage)
 {
     damage -= defense;
     if (damage <= 0)
-        damage = 2;
+        damage = 1;
     if (status_bar.shield > 0)
     {
         status_bar.shield -= damage;

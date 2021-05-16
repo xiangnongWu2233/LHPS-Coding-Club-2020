@@ -9,7 +9,7 @@ class status
 {
 public:
     bool control, damageOvertime;
-    int trial, frozen, inAir;
+    int trial, frozen, inAir, stunned;
     int shield;
     status()
     {
@@ -18,6 +18,7 @@ public:
         trial = 0;
         frozen = 0;
         inAir = 0;
+        stunned = 0;
     }
 };
 
@@ -29,7 +30,7 @@ public:
     int hpMaximum[11];
     int baseAttack, baseDefense, baseHP;
     void normalAttack(int target);
-    virtual void skill(int target);
+    virtual void skill(int target) {}
 };
 
 class player

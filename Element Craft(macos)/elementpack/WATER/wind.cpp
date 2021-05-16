@@ -19,15 +19,15 @@ wind::wind() : water()
 void wind::skill(int target)
 {
     int coin = rand() % 100 + 1;
-    if (coin <= 10)
-        cyclone();
-    else if (coin > 10 && coin <= 50)
-        hurricane(target);
-    else if (coin > 50 && coin <= 60)
-        stormrage(target);
-    else if (coin > 60 && coin <= 80)
+    if (coin <= 20)
         normalAttack(target);
-    if (coin >= 1 && coin <= 60)
+    else if (coin > 20 && coin <= 30)
+        cyclone();
+    else if (coin > 30 && coin <= 40)
+        stormrage(target);
+    else if (coin > 40 && coin <= 80)
+        hurricane(target);
+    if (coin >= 20 && coin <= 80)
         players[user].gainExp(1);
 }
 
@@ -53,13 +53,14 @@ void wind::hurricane(int target)
 void wind::stormrage(int target)
 {
     printf("Stormrage!!!\n");
-    sleep(1);
+    sleep(2);
     players[target].receiveDamage(user, players[user].defense + players[user].level + 3);
 
     if (players[target].status_bar.trial == 0 && players[target].status_bar.frozen == 0)
     {
+        players[target].status_bar.stunned = 0;
         printf("%d %s in air!\n", target, players[target].name.c_str());
-        players[target].status_bar.inAir = 2;
+        players[target].status_bar.inAir += 2;
         players[target].status_bar.control = 1;
     }
     sleep(1);

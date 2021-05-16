@@ -68,7 +68,7 @@ void ice::glacier()
     for (int i = first, cnt = 1; cnt <= n - dn; i = players[i].next, cnt++)
         if (i != user)
         {
-            freeze(i, 3);
+            freeze(i, int(players[user].level / 2));
             players[i].receiveDamage(user, 4 + players[user].level);
         }
     sleep(1);

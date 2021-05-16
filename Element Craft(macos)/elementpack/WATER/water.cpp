@@ -10,7 +10,7 @@ water::water()
     name = "Water";
     baseAttack = 2;
     baseDefense = 5;
-    baseHP = 15;
+    baseHP = 22;
     hpMaximum[1] = baseHP;
     for (int i = 2; i <= 4; i++)
         hpMaximum[i] = hpMaximum[i - 1] + i;

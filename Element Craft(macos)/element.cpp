@@ -13,8 +13,3 @@ void element::normalAttack(int target)
     if (t > players[target].hp)
         players[user].gainExp(1);
 }
-
-void element::skill(int target)
-{
-    normalAttack(target);
-}

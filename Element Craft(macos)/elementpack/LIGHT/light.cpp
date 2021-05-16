@@ -10,7 +10,7 @@ light::light()
     name = "Light";
     baseAttack = 3;
     baseDefense = 4;
-    baseHP = 19;
+    baseHP = 25;
     hpMaximum[1] = baseHP;
     for (int i = 2; i <= 5; i++)
         hpMaximum[i] = hpMaximum[i - 1] + i;

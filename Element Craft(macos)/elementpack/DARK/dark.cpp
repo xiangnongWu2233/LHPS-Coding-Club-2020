@@ -9,7 +9,7 @@ dark::dark()
     name = "Dark";
     baseAttack = 4;
     baseDefense = 3;
-    baseHP = 19;
+    baseHP = 24;
     hpMaximum[1] = baseHP;
     for (int i = 2; i <= 5; i++)
         hpMaximum[i] = hpMaximum[i - 1] + i;
