@@ -9,20 +9,26 @@ class grass : public element
 {
 public:
     grass();
+    virtual void skill(int target);
+    void grow();
 };
 
 class earth : public grass
 {
 public:
     earth();
-    //virtual void skill();
+    virtual void skill(int target);
+    void root();
 };
 
 class poison : public grass
 {
 public:
     poison();
-    //virtual void skill();
+    virtual void skill(int target);
+    void poisoning(int target);
+    void poisonGas();
+    void virusAttack(int target);
 };
 
 #endif

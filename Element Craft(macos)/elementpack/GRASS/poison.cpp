@@ -14,3 +14,7 @@ poison::poison() : grass()
     cout << name;
     printf("\033[0m\n");
 }
+
+void poison::skill(int target)
+{
+}

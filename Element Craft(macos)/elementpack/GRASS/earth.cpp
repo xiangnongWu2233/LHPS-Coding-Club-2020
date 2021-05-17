@@ -15,3 +15,7 @@ earth::earth() : grass()
     cout << name;
     printf("\033[0m\n");
 }
+
+void earth::skill(int target)
+{
+}

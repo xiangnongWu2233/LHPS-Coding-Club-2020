@@ -34,5 +34,4 @@ void fire::fireball(int target)
 {
     printf("Fireball!\n");
     players[target].receiveDamage(user, players[user].attack + 2);
-    sleep(1);
 }

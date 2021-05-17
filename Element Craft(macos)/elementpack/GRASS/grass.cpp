@@ -16,3 +16,21 @@ grass::grass()
     for (int i = 7; i <= 10; i++)
         hpMaximum[i] = hpMaximum[i - 1] + 6;
 }
+
+void grass::skill(int target)
+{
+    int coin = rand() % 100 + 1;
+    if (coin <= 60)
+        normalAttack(target);
+    else if (coin > 60)
+        grow();
+    if (coin > 60)
+        players[user].gainExp(1);
+}
+
+void grass::grow()
+{
+    printf("Grow!\n");
+    for (int i = 1; i <= 10; i++)
+        hpMaximum[i] += 1;
+}

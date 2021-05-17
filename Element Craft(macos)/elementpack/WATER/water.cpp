@@ -37,5 +37,4 @@ void water::flow()
         if (i != user)
             players[i].receiveDamage(user, 2 + players[user].level);
     }
-    sleep(1);
 }
