@@ -56,7 +56,7 @@ void thunder::tremendousThunderbolt()
 {
     printf("Tremendous Thunderbolt!!!\n");
     sleep(2);
-    for (int i = first, cnt = 1; cnt <= n - dn; i = players[i].next)
+    for (int i = first, cnt = 1; cnt <= n - dn; i = players[i].next, cnt++)
     {
         if (i != user)
         {
