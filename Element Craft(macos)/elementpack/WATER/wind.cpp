@@ -36,25 +36,25 @@ void wind::cyclone()
     printf("Cyclone!\n");
     sleep(1);
     printf("%d %s + %d shield\n", user, players[user].name.c_str(), players[user].level);
-    players[user].status_bar.shield += 2;
+    players[user].status_bar.shield += players[user].level;
 }
 
 void wind::hurricane(int target)
 {
     printf("Hurricane!\n");
     sleep(1);
-    players[target].receiveDamage(user, 1 + players[user].level);
+    players[target].receiveDamage(user, 3 + 2 * players[user].level);
     if (players[target].last != user)
-        players[players[target].last].receiveDamage(user, 1 + 2 * players[user].level);
+        players[players[target].last].receiveDamage(user, 2 * players[user].level);
     if (players[target].next != user)
-        players[players[target].next].receiveDamage(user, 1 + 2 * players[user].level);
+        players[players[target].next].receiveDamage(user, 2 * players[user].level);
 }
 
 void wind::stormrage(int target)
 {
     printf("Stormrage!!!\n");
     sleep(2);
-    players[target].receiveDamage(user, players[user].defense + players[user].level + 3);
+    players[target].receiveDamage(user, players[target].defense + players[user].level * 2 + players[user].attack);
 
     if (players[target].status_bar.trial == 0 && players[target].status_bar.frozen == 0)
     {

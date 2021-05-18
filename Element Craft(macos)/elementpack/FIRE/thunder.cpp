@@ -48,7 +48,7 @@ void thunder::thunderStrike(int target)
 void thunder::ballLightning()
 {
     printf("Ball Lightning!\n");
-    players[user].restoreHP(3);
+    players[user].restoreHP(players[user].level);
     sleep(1);
 }
 
@@ -60,7 +60,7 @@ void thunder::tremendousThunderbolt()
     {
         if (i != user)
         {
-            players[i].receiveDamage(user, players[user].level * 2 + players[i].defense);
+            players[i].receiveDamage(user, players[user].level * 2 + players[user].attack + players[i].defense);
         }
     }
 }

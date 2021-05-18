@@ -56,24 +56,24 @@ void player::showStatus(int mode)
         if (status_bar.trial > 0)
         {
             printf("In trial!");
-            status_bar.trial -= 1;
+            status_bar.trial--;
         }
         else if (status_bar.frozen > 0)
         {
             printf("Frozen!");
-            status_bar.frozen -= 1;
+            status_bar.frozen--;
         }
         else if (status_bar.inAir > 0 || status_bar.stunned > 0)
         {
             if (status_bar.inAir > 0)
             {
                 printf("In Air!");
-                status_bar.inAir -= 1;
+                status_bar.inAir--;
             }
             else
             {
                 printf("Stunned!");
-                status_bar.stunned -= 1;
+                status_bar.stunned--;
             }
         }
         if (status_bar.trial == status_bar.frozen == status_bar.inAir == status_bar.stunned == 0)
@@ -110,6 +110,14 @@ void player::turn()
     ele->skill(stoi(choice));
     if (dn == n - 1)
         return;
+    if (status_bar.damageOvertime)
+    {
+        if (status_bar.poisoning[1] > 0)
+        {
+            receiveDamage(status_bar.poisoning[0], status_bar.poisoning[2]);
+            status_bar.poisoning[1]--;
+        }
+    }
 }
 
 void player::upgrade()

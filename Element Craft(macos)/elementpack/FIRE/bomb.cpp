@@ -27,6 +27,8 @@ void bomb::skill(int target)
     {
         if (missles == 3)
             nuclearStrike();
+        else
+            missle(target);
     }
     else if (coin > 70 && coin <= 80)
         devastate(target);
@@ -50,11 +52,11 @@ void bomb::missle(int target)
     }
     if (choice == "1")
     {
-        players[target].receiveDamage(user, players[user].level + 3);
+        players[target].receiveDamage(user, players[user].level + 4);
         if (players[target].last != user)
-            players[players[target].last].receiveDamage(user, players[user].level + 1);
+            players[players[target].last].receiveDamage(user, players[user].level + 2);
         if (players[target].next != user)
-            players[players[target].next].receiveDamage(user, players[user].level + 1);
+            players[players[target].next].receiveDamage(user, players[user].level + 2);
     }
     else
         missles++;

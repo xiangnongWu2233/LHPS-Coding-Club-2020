@@ -11,6 +11,7 @@ public:
     bool control, damageOvertime;
     int trial, frozen, inAir, stunned;
     int shield;
+    int poisoning[3], cursing;
     status()
     {
         control = 0;

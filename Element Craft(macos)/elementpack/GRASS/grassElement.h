@@ -26,8 +26,8 @@ class poison : public grass
 public:
     poison();
     virtual void skill(int target);
-    void poisoning(int target);
-    void poisonGas();
+    void poisoning(int target, int time, int damage);
+    void poisonGas(int target);
     void virusAttack(int target);
 };
 

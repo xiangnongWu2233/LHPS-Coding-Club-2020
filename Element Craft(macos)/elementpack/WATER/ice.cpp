@@ -34,6 +34,8 @@ void ice::skill(int target)
             }
         if (t == 1)
             frostStrike(target);
+        else
+            freeze(target, 1);
     }
     else if (coin > 60 && coin <= 80)
         glacier();
@@ -57,7 +59,7 @@ void ice::frostStrike(int target)
     for (int i = first, cnt = 1; cnt <= n - dn; i = players[i].next, cnt++)
     {
         if (players[i].status_bar.frozen > 0 && i != user)
-            players[i].receiveDamage(user, 2 + players[user].level * 2);
+            players[i].receiveDamage(user, players[user].level * 3);
     }
 }
 
@@ -69,7 +71,7 @@ void ice::glacier()
         if (i != user)
         {
             freeze(i, int(players[user].level / 2));
-            players[i].receiveDamage(user, 4 + players[user].level);
+            players[i].receiveDamage(user, 4 + 2 * players[user].level);
         }
     sleep(1);
 }
