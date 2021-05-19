@@ -87,6 +87,7 @@ int main()
         system("clear");
         for (int i = first, cnt = 1; cnt <= n - dn; i = players[i].next, cnt++)
             players[i].show();
+        sleep(1);
         cout << endl;
     }
     return 0;

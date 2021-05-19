@@ -19,11 +19,11 @@ ice::ice() : water()
 void ice::skill(int target)
 {
     int coin = rand() % 100 + 1;
-    if (coin <= 20)
+    if (coin <= 30)
         normalAttack(target);
-    else if (coin > 20 && coin <= 40)
+    else if (coin > 30 && coin <= 60)
         freeze(target, 1);
-    else if (coin > 40 && coin <= 60)
+    else if (coin > 60 && coin <= 80)
     {
         int t = 0;
         for (int i = first, cnt = 1; cnt <= n - dn; i = players[i].next, cnt++)
@@ -37,10 +37,8 @@ void ice::skill(int target)
         else
             freeze(target, 1);
     }
-    else if (coin > 60 && coin <= 80)
+    else if (coin > 80)
         glacier();
-    if (coin > 20 && coin <= 80)
-        players[user].gainExp(1);
 }
 
 void ice::freeze(int target, int time)
@@ -51,6 +49,7 @@ void ice::freeze(int target, int time)
         players[target].status_bar.frozen += time;
         players[target].status_bar.control = 1;
     }
+    players[user].gainExp(1);
 }
 
 void ice::frostStrike(int target)
@@ -61,6 +60,7 @@ void ice::frostStrike(int target)
         if (players[i].status_bar.frozen > 0 && i != user)
             players[i].receiveDamage(user, players[user].level * 3);
     }
+    players[user].gainExp(1);
 }
 
 void ice::glacier()
@@ -73,5 +73,6 @@ void ice::glacier()
             freeze(i, int(players[user].level / 2));
             players[i].receiveDamage(user, 4 + 2 * players[user].level);
         }
+    players[user].gainExp(1);
     sleep(1);
 }

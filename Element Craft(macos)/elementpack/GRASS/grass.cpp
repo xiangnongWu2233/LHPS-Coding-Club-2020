@@ -9,7 +9,7 @@ grass::grass()
     name = "Grass";
     baseAttack = 3;
     baseDefense = 3;
-    baseHP = 28;
+    baseHP = 35;
     hpMaximum[1] = baseHP;
     for (int i = 2; i <= 6; i++)
         hpMaximum[i] = hpMaximum[i - 1] + i;

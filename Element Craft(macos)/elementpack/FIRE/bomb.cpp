@@ -19,21 +19,19 @@ bomb::bomb() : fire()
 void bomb::skill(int target)
 {
     int coin = rand() % 100 + 1;
-    if (coin <= 30)
+    if (coin <= 20)
         normalAttack(target);
-    else if (coin > 30 && coin <= 60)
+    else if (coin > 20 && coin <= 60)
         missle(target);
-    else if (coin > 60 && coin <= 70)
+    else if (coin > 60 && coin <= 80)
     {
         if (missles == 3)
-            nuclearStrike();
+            nuclearStrike(target);
         else
             missle(target);
     }
-    else if (coin > 70 && coin <= 80)
+    else if (coin > 80)
         devastate(target);
-    if (coin > 30 && coin <= 80)
-        players[user].gainExp(1);
 }
 
 void bomb::missle(int target)
@@ -60,6 +58,7 @@ void bomb::missle(int target)
     }
     else
         missles++;
+    players[user].gainExp(1);
 }
 
 void bomb::devastate(int target)
@@ -71,18 +70,19 @@ void bomb::devastate(int target)
         return;
     }
     players[target].receiveDamage(user, players[user].attack);
+    players[user].gainExp(1);
 }
 
-void bomb::nuclearStrike()
+void bomb::nuclearStrike(int target)
 {
     printf("Nuclear Strike!!!\n");
     sleep(2);
-    for (int i = first, cnt = 1; cnt <= n - dn; i = players[i].next)
-    {
-        if (i != user)
-        {
-            players[i].receiveDamage(user, players[user].attack * 3);
-        }
-    }
+    players[target].receiveDamage(user, players[user].attack * 2 + players[user].level);
+    if (players[target].last != user)
+        players[players[target].last].receiveDamage(user, players[user].attack * 2 + players[user].level - 5);
+    if (players[target].next != user)
+        players[players[target].next].receiveDamage(user, players[user].attack * 2 + players[user].level - 5);
+    missles = 0;
+    players[user].gainExp(1);
     sleep(1);
 }

@@ -31,7 +31,7 @@ public:
     virtual void skill(int target);
     void missle(int target);
     void devastate(int target);
-    void nuclearStrike();
+    void nuclearStrike(int target);
 };
 
 #endif

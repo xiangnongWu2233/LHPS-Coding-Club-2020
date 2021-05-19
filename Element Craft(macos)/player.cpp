@@ -76,7 +76,7 @@ void player::showStatus(int mode)
                 status_bar.stunned--;
             }
         }
-        if (status_bar.trial == status_bar.frozen == status_bar.inAir == status_bar.stunned == 0)
+        if (status_bar.trial <= 0 && status_bar.frozen <= 0 && status_bar.inAir <= 0 && status_bar.stunned <= 0)
             status_bar.control = 0;
         cout << endl;
     }
@@ -172,7 +172,7 @@ void player::receiveDamage(int from, int damage)
     {
         status_bar.shield -= damage;
         if (status_bar.shield >= 0)
-            printf("%d %s shield remains: %d", user, name.c_str(), status_bar.shield);
+            printf("%d %s shield remains: %d\n", user, name.c_str(), status_bar.shield);
         return;
         damage = -status_bar.shield;
         status_bar.shield = 0;

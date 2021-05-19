@@ -19,18 +19,16 @@ poison::poison() : grass()
 void poison::skill(int target)
 {
     int coin = rand() % 100 + 1;
-    if (coin <= 40)
+    if (coin <= 50)
     {
         normalAttack(target);
         if (players[target].status_bar.poisoning[0] == 0)
             poisoning(target, 2, 2);
     }
-    else if (coin > 40 && coin <= 70)
+    else if (coin > 50 && coin <= 80)
         poisonGas(target);
-    else if (coin > 70 && coin <= 80)
+    else if (coin > 80)
         virusAttack(target);
-    if (coin > 40 && coin <= 80)
-        players[user].gainExp(1);
 }
 
 void poison::poisoning(int target, int time, int damage)
@@ -41,6 +39,7 @@ void poison::poisoning(int target, int time, int damage)
     players[target].status_bar.poisoning[2] = damage;
     players[target].status_bar.damageOvertime = 1;
     sleep(1);
+    players[user].gainExp(1);
 }
 
 void poison::poisonGas(int target)
@@ -58,6 +57,7 @@ void poison::poisonGas(int target)
         players[i].receiveDamage(user, players[user].attack);
         poisoning(i, 3, players[user].level - 2);
     }
+    players[user].gainExp(1);
     sleep(1);
 }
 
@@ -69,5 +69,6 @@ void poison::virusAttack(int target)
     players[user].restoreHP(players[target].status_bar.poisoning[0] * 3);
     if (players[target].hp <= 0)
         players[user].restoreHP(players[user].level * 2);
+    players[user].gainExp(1);
     sleep(1);
 }
