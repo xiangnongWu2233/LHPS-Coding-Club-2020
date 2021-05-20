@@ -18,7 +18,9 @@ class earth : public grass
 public:
     earth();
     virtual void skill(int target);
-    void root();
+    void entanglingRoots();
+    void rejuvenation();
+    void allFlowersbloom();
 };
 
 class poison : public grass

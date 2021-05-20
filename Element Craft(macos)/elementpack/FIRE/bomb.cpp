@@ -32,6 +32,8 @@ void bomb::skill(int target)
     }
     else if (coin > 80)
         devastate(target);
+    if (coin > 20)
+        players[user].gainExp(1);
 }
 
 void bomb::missle(int target)
@@ -58,7 +60,7 @@ void bomb::missle(int target)
     }
     else
         missles++;
-    players[user].gainExp(1);
+    sleep(1);
 }
 
 void bomb::devastate(int target)
@@ -70,7 +72,7 @@ void bomb::devastate(int target)
         return;
     }
     players[target].receiveDamage(user, players[user].attack);
-    players[user].gainExp(1);
+    sleep(1);
 }
 
 void bomb::nuclearStrike(int target)
@@ -83,6 +85,5 @@ void bomb::nuclearStrike(int target)
     if (players[target].next != user)
         players[players[target].next].receiveDamage(user, players[user].attack * 2 + players[user].level - 5);
     missles = 0;
-    players[user].gainExp(1);
     sleep(1);
 }

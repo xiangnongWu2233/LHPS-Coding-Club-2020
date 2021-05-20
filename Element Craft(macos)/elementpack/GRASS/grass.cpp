@@ -24,8 +24,6 @@ void grass::skill(int target)
         normalAttack(target);
     else if (coin > 60)
         grow();
-    if (coin > 60)
-        players[user].gainExp(1);
 }
 
 void grass::grow()
@@ -33,4 +31,6 @@ void grass::grow()
     printf("Grow!\n");
     for (int i = 1; i <= 10; i++)
         hpMaximum[i] += 1;
+    players[user].gainExp(1);
+    sleep(1);
 }

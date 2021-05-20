@@ -78,11 +78,7 @@ int main()
             cout << endl;
         }
         for (int i = first, cnt = 1; cnt <= n - dn; i = players[i].next, cnt++)
-        {
             players[i].restoreHP(players[i].hpRestore);
-            if (players[i].ele->elementLevel == 1)
-                players[i].gainExp(1);
-        }
         sleep(1);
         system("clear");
         for (int i = first, cnt = 1; cnt <= n - dn; i = players[i].next, cnt++)

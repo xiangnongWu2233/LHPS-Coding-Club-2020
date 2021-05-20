@@ -9,9 +9,10 @@ class status
 {
 public:
     bool control, damageOvertime;
-    int trial, frozen, inAir, stunned;
-    int shield;
-    int poisoning[3], cursing;
+    int trial, frozen, inAir, stunned; //control
+    int shield;                        //buff
+    int seeds;                         //mark
+    int poisoning[3], cursing;         //damageovertime
     status()
     {
         control = 0;
@@ -20,6 +21,7 @@ public:
         frozen = 0;
         inAir = 0;
         stunned = 0;
+        seeds = 0;
     }
 };
 

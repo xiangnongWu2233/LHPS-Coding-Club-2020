@@ -29,6 +29,8 @@ void poison::skill(int target)
         poisonGas(target);
     else if (coin > 80)
         virusAttack(target);
+    if (coin > 50)
+        players[user].gainExp(1);
 }
 
 void poison::poisoning(int target, int time, int damage)
@@ -39,7 +41,6 @@ void poison::poisoning(int target, int time, int damage)
     players[target].status_bar.poisoning[2] = damage;
     players[target].status_bar.damageOvertime = 1;
     sleep(1);
-    players[user].gainExp(1);
 }
 
 void poison::poisonGas(int target)
@@ -47,17 +48,16 @@ void poison::poisonGas(int target)
     printf("Poison Gas!\n");
     players[target].receiveDamage(user, players[user].attack + players[user].defense);
     poisoning(target, 3, players[user].level);
-    for (int i = players[target].last; players[players[i].last].status_bar.poisoning[0] == 0 && i != user; i = players[i].last)
+    for (int i = players[target].last; i != user; i = players[i].last)
     {
         players[i].receiveDamage(user, players[user].attack);
         poisoning(i, 3, players[user].level - 2);
     }
-    for (int i = players[target].next; players[players[i].next].status_bar.poisoning[0] == 0 && i != user; i = players[i].next)
+    for (int i = players[target].next; i != user; i = players[i].next)
     {
         players[i].receiveDamage(user, players[user].attack);
         poisoning(i, 3, players[user].level - 2);
     }
-    players[user].gainExp(1);
     sleep(1);
 }
 
@@ -65,10 +65,9 @@ void poison::virusAttack(int target)
 {
     printf("Virus Attack!!!\n");
     sleep(2);
-    players[target].receiveDamage(user, players[target].status_bar.poisoning[0] * 5);
-    players[user].restoreHP(players[target].status_bar.poisoning[0] * 3);
+    players[target].receiveDamage(user, players[target].status_bar.poisoning[0] * 5 + 3);
+    players[user].restoreHP(players[target].status_bar.poisoning[0] * 3 + 1);
     if (players[target].hp <= 0)
         players[user].restoreHP(players[user].level * 2);
-    players[user].gainExp(1);
     sleep(1);
 }

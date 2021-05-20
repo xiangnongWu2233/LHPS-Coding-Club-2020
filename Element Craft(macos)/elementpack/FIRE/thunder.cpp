@@ -27,6 +27,8 @@ void thunder::skill(int target)
         ballLightning();
     else if (coin > 80)
         tremendousThunderbolt();
+    if (coin > 20)
+        players[user].gainExp(1);
 }
 
 void thunder::thunderStrike(int target)
@@ -40,7 +42,6 @@ void thunder::thunderStrike(int target)
         players[target].status_bar.stunned += 1;
         players[target].status_bar.control = 1;
     }
-    players[user].gainExp(1);
     sleep(1);
 }
 
@@ -48,7 +49,6 @@ void thunder::ballLightning()
 {
     printf("Ball Lightning!\n");
     players[user].restoreHP(players[user].level);
-    players[user].gainExp(1);
     sleep(1);
 }
 
@@ -57,12 +57,7 @@ void thunder::tremendousThunderbolt()
     printf("Tremendous Thunderbolt!!!\n");
     sleep(2);
     for (int i = first, cnt = 1; cnt <= n - dn; i = players[i].next, cnt++)
-    {
         if (i != user)
-        {
             players[i].receiveDamage(user, players[user].level * 2 + players[i].defense);
-        }
-    }
-    players[user].gainExp(1);
     sleep(1);
 }

@@ -45,7 +45,7 @@ void player::initialize(string n, int id, string e) //initialize each players
 
 void player::show()
 {
-    printf("%d %-8s : Element %-6s Attack %-2d  Defense %-2d  HP  %-2d  EXP %-2d Level %d\n", user, name.c_str(), ele->name.c_str(), attack, defense, hp, exp, level);
+    printf("%d %-8s : Element %-8s Attack %-2d  Defense %-2d  HP  %-2d  EXP %-2d Level %d\n", user, name.c_str(), ele->name.c_str(), attack, defense, hp, exp, level);
 }
 
 void player::showStatus(int mode)
@@ -70,13 +70,13 @@ void player::showStatus(int mode)
                 printf("In Air!");
                 status_bar.inAir--;
             }
-            else
+            else if (status_bar.stunned > 0)
             {
                 printf("Stunned!");
                 status_bar.stunned--;
             }
         }
-        if (status_bar.trial <= 0 && status_bar.frozen <= 0 && status_bar.inAir <= 0 && status_bar.stunned <= 0)
+        if (status_bar.trial == 0 && status_bar.frozen == 0 && status_bar.inAir == 0 && status_bar.stunned == 0)
             status_bar.control = 0;
         cout << endl;
     }

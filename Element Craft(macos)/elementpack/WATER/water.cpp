@@ -25,8 +25,6 @@ void water::skill(int target)
         normalAttack(target);
     else if (coin > 60)
         flow();
-    if (coin > 60)
-        players[user].gainExp(1);
 }
 
 void water::flow()
@@ -37,4 +35,6 @@ void water::flow()
         if (i != user)
             players[i].receiveDamage(user, 2 + players[user].level);
     }
+    players[user].gainExp(1);
+    sleep(1);
 }

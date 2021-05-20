@@ -26,12 +26,12 @@ void fire::skill(int target)
         normalAttack(target);
     else if (coin > 70)
         fireball(target);
-    if (coin > 70)
-        players[user].gainExp(1);
 }
 
 void fire::fireball(int target)
 {
     printf("Fireball!\n");
     players[target].receiveDamage(user, players[user].attack + 2);
+    players[user].gainExp(1);
+    sleep(1);
 }

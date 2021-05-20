@@ -27,6 +27,8 @@ void wind::skill(int target)
         stormrage(target);
     else if (coin > 70)
         hurricane(target);
+    if (coin > 20)
+        players[user].gainExp(1);
 }
 
 void wind::cyclone()
