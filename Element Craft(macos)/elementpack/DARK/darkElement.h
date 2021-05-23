@@ -8,22 +8,29 @@ class dark : public element
 {
 public:
     dark();
+    virtual void skill(int target);
+    void cut(int target);
 };
 
 class demon : public dark
 {
 public:
-    int sigil;
+    int sigils;
     demon();
-    //virtual void skill();
-    void sixFoldcursing();
+    virtual void skill(int target);
+    void blackSigil();
+    void devour(int target);
+    void sixFoldcurse();
 };
 
 class ghost : public dark
 {
 public:
     ghost();
-    //virtual void skill();
+    virtual void skill(int target);
+    void terrify(int target);
+    void drainSoul(int target);
+    void mentalConfusion();
 };
 
 #endif

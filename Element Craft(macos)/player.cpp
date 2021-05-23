@@ -55,13 +55,27 @@ void player::showStatus(int mode)
         printf("%d %s ", user, name.c_str());
         if (status_bar.trial > 0)
         {
-            printf("In trial!");
+            printf("On trial!");
             status_bar.trial--;
+            status_bar.frozen = 0;
+            status_bar.terrified = 0;
+            status_bar.inAir = 0;
+            status_bar.stunned = 0;
         }
         else if (status_bar.frozen > 0)
         {
             printf("Frozen!");
             status_bar.frozen--;
+            status_bar.terrified = 0;
+            status_bar.inAir = 0;
+            status_bar.stunned = 0;
+        }
+        else if (status_bar.terrified > 0)
+        {
+            printf("Terrified!");
+            status_bar.terrified--;
+            status_bar.inAir = 0;
+            status_bar.stunned = 0;
         }
         else if (status_bar.inAir > 0 || status_bar.stunned > 0)
         {
@@ -76,7 +90,7 @@ void player::showStatus(int mode)
                 status_bar.stunned--;
             }
         }
-        if (status_bar.trial == 0 && status_bar.frozen == 0 && status_bar.inAir == 0 && status_bar.stunned == 0)
+        if (status_bar.trial == 0 && status_bar.frozen == 0 && status_bar.terrified == 0 && status_bar.inAir == 0 && status_bar.stunned == 0)
             status_bar.control = 0;
         cout << endl;
     }
@@ -165,6 +179,11 @@ void player::upgrade()
 
 void player::receiveDamage(int from, int damage)
 {
+    if (status_bar.soulpiece > 0)
+    {
+        damage *= 2;
+        status_bar.soulpiece--;
+    }
     damage -= defense;
     if (damage <= 0)
         damage = 1;

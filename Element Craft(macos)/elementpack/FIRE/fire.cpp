@@ -31,7 +31,7 @@ void fire::skill(int target)
 void fire::fireball(int target)
 {
     printf("Fireball!\n");
-    players[target].receiveDamage(user, players[user].attack + 2);
+    players[target].receiveDamage(user, players[user].level * 3);
     players[user].gainExp(1);
     sleep(1);
 }

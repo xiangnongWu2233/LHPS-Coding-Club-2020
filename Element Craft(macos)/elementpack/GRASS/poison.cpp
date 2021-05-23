@@ -35,7 +35,7 @@ void poison::skill(int target)
 
 void poison::poisoning(int target, int time, int damage)
 {
-    printf("%d %s poisoning!\n", target, players[target].name.c_str());
+    printf("%d %s was poisoned!\n", target, players[target].name.c_str());
     players[target].status_bar.poisoning[0] = user;
     players[target].status_bar.poisoning[1] = time;
     players[target].status_bar.poisoning[2] = damage;

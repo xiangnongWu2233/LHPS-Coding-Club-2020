@@ -58,10 +58,10 @@ void wind::stormrage(int target)
     sleep(2);
     players[target].receiveDamage(user, players[target].defense + players[user].level * 2 + players[user].attack);
 
-    if (players[target].status_bar.trial == 0 && players[target].status_bar.frozen == 0)
+    if (players[target].status_bar.trial == 0 && players[target].status_bar.frozen == 0 && players[target].status_bar.terrified)
     {
         players[target].status_bar.stunned = 0;
-        printf("%d %s in air!\n", target, players[target].name.c_str());
+        printf("%d %s was in air!\n", target, players[target].name.c_str());
         players[target].status_bar.inAir += 2;
         players[target].status_bar.control = 1;
     }

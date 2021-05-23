@@ -17,3 +17,20 @@ light::light()
     for (int i = 6; i <= 10; i++)
         hpMaximum[i] = hpMaximum[i - 1] + 4;
 }
+
+void light::skill(int target)
+{
+    int coin = rand() % 100 + 1;
+    if (coin <= 60)
+        normalAttack(target);
+    else if (coin > 60)
+        shine();
+}
+
+void light::shine()
+{
+    printf("Shine!\n");
+    printf("%d %s + 1 shield\n", user, players[user].name.c_str());
+    players[user].status_bar.shield++;
+    players[user].gainExp(1);
+}

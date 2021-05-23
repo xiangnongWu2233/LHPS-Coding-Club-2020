@@ -47,7 +47,7 @@ void ice::freeze(int target, int time)
 {
     if (players[target].status_bar.trial == 0)
     {
-        printf("Freeze %d %s !\n", target, players[target].name.c_str());
+        printf("%d %s was frozen!\n", target, players[target].name.c_str());
         players[target].status_bar.frozen += time;
         players[target].status_bar.control = 1;
     }

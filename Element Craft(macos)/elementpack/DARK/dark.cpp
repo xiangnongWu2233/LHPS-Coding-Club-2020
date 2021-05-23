@@ -16,3 +16,19 @@ dark::dark()
     for (int i = 6; i <= 10; i++)
         hpMaximum[i] = hpMaximum[i - 1] + 4;
 }
+
+void dark::skill(int target)
+{
+    int coin = rand() % 100 + 1;
+    if (coin <= 60)
+        normalAttack(target);
+    else if (coin > 60)
+        cut(target);
+}
+
+void dark::cut(int target)
+{
+    players[user].attack++;
+    players[user].ele->normalAttack(target);
+    players[user].attack--;
+}

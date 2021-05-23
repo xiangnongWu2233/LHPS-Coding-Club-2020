@@ -49,10 +49,10 @@ void earth::entanglingRoots()
         if (i != user)
         {
             players[i].receiveDamage(user, players[user].level + players[i].defense);
-            if (players[i].status_bar.trial == 0 && players[i].status_bar.frozen == 0)
+            if (players[i].status_bar.trial == 0 && players[i].status_bar.frozen == 0 && players[i].status_bar.terrified == 0)
             {
                 players[i].status_bar.inAir = 0;
-                printf("%d %s Stunned!\n", i, players[i].name.c_str());
+                printf("%d %s was stunned!\n", i, players[i].name.c_str());
                 players[i].status_bar.stunned += 2;
                 players[i].status_bar.control = 1;
             }
