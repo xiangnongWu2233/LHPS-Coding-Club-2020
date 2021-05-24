@@ -47,7 +47,7 @@ void demon::blackSigil()
 void demon::devour(int target)
 {
     printf("Devour!\n");
-    int damage = (players[target].ele->hpMaximum[players[target].level] - players[target].hp) * 0.2 + players[user].level;
+    int damage = (players[target].ele->hpMaximum[players[target].level] - players[target].hp) * 0.1 + players[user].level * 2;
     players[target].receiveDamage(user, damage);
     sleep(1);
 }

@@ -22,9 +22,9 @@ void spirit::skill(int target)
     {
         if (bless > 0)
         {
-            players[user].attack += bless;
+            players[user].attack++;
             normalAttack(target);
-            players[user].attack -= bless;
+            players[user].attack--;
             bless--;
         }
         else
@@ -63,7 +63,7 @@ void spirit::callFromsoul(int target)
     sleep(2);
     printf("%d %s became fragile!\n", target, players[target].name.c_str());
     players[target].status_bar.soulpiece += 2;
-    players[target].receiveDamage(user, players[target].defense + players[target].attack);
+    players[target].receiveDamage(user, players[target].defense + players[target].level);
     bless++;
     sleep(1);
 }

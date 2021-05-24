@@ -33,4 +33,5 @@ void light::shine()
     printf("%d %s + 1 shield\n", user, players[user].name.c_str());
     players[user].status_bar.shield++;
     players[user].gainExp(1);
+    sleep(1);
 }

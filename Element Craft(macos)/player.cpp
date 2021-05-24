@@ -45,7 +45,7 @@ void player::initialize(string n, int id, string e) //initialize each players
 
 void player::show()
 {
-    printf("%d %-8s : Element %-8s Attack %-2d  Defense %-2d  HP  %-2d  EXP %-2d Level %d\n", user, name.c_str(), ele->name.c_str(), attack, defense, hp, exp, level);
+    printf("%d %-10s : Element %-8s Attack %-2d  Defense %-2d  HP  %-2d  EXP %-2d Level %d\n", user, name.c_str(), ele->name.c_str(), attack, defense, hp, exp, level);
 }
 
 void player::showStatus(int mode)
@@ -170,7 +170,7 @@ void player::upgrade()
         if (level >= 2 && ele->elementLevel == 1)
         {
             int coin = rand() % 100 + 1;
-            if (coin >= 40 - 10 * (level - 3))
+            if (coin >= 1 - 10 * (level - 3))
                 mutate();
         }
     }
@@ -190,14 +190,18 @@ void player::receiveDamage(int from, int damage)
     if (status_bar.shield > 0)
     {
         status_bar.shield -= damage;
-        if (status_bar.shield >= 0)
+        if (status_bar.shield > 0)
+        {
             printf("%d %s shield remains: %d\n", user, name.c_str(), status_bar.shield);
-        return;
+            return;
+        }
         damage = -status_bar.shield;
         status_bar.shield = 0;
         printf("Shield broken!\n");
         cout << endl;
         sleep(1);
+        if (damage == 0)
+            return;
     }
     printf("%d %s - %d\n", user, name.c_str(), damage);
     hp -= damage;

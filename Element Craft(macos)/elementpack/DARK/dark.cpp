@@ -28,7 +28,9 @@ void dark::skill(int target)
 
 void dark::cut(int target)
 {
-    players[user].attack++;
+    printf("Cut!\n");
+    players[user].attack += 2;
     players[user].ele->normalAttack(target);
-    players[user].attack--;
+    players[user].attack -= 2;
+    sleep(1);
 }

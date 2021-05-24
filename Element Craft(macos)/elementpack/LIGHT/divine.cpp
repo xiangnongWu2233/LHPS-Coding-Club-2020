@@ -62,6 +62,7 @@ void divine::justice(int target)
     sleep(2);
     printf("%d %s was on trial!\n", target, players[target].name.c_str());
     players[target].status_bar.trial = 2;
+    players[target].status_bar.control = 1;
     courage += 3;
     sleep(1);
 }
