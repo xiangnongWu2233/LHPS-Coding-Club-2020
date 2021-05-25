@@ -38,6 +38,10 @@ int main()
 {
     srand(time(0));
     system("clear");
+    printf("*******************LHPS Coding Club*******************\n");
+    sleep(1);
+    printf("***************Produced by Xiangnong Wu***************\n\n");
+    sleep(2);
     printf("Enter the number of players: ");
     cin >> n;
     cout << endl;
