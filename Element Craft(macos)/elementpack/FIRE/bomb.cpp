@@ -52,7 +52,7 @@ void bomb::missle(int target)
     }
     if (choice == "1")
     {
-        players[target].receiveDamage(user, players[user].level + 4);
+        players[target].receiveDamage(user, players[user].level + players[user].attack + 4);
         if (players[target].last != user)
             players[players[target].last].receiveDamage(user, players[user].level + players[user].attack);
         if (players[target].next != user)

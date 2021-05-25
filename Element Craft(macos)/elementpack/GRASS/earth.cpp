@@ -23,20 +23,9 @@ void earth::skill(int target)
         normalAttack(target);
     else if (coin > 10 && coin <= 40)
         entanglingRoots();
-    else if (coin > 40 && coin <= 70)
-    {
-        for (int i = first, cnt = 1; cnt <= n - dn; i = players[i].next, cnt++)
-            if (i != user)
-            {
-                if (players[i].status_bar.seeds > 0)
-                {
-                    rejuvenation();
-                    return;
-                }
-            }
-        allFlowersbloom();
-    }
-    else if (coin > 70)
+    else if (coin > 40 && coin <= 50)
+        rejuvenation();
+    else if (coin > 50)
         allFlowersbloom();
     if (coin > 10)
         players[user].gainExp(1);
@@ -52,7 +41,7 @@ void earth::entanglingRoots()
             if (players[i].status_bar.trial == 0 && players[i].status_bar.frozen == 0 && players[i].status_bar.terrified == 0)
             {
                 players[i].status_bar.inAir = 0;
-                printf("%d %s was stunned!\n", i, players[i].name.c_str());
+                printf("%d %s was stunned!\n\n", i, players[i].name.c_str());
                 players[i].status_bar.stunned += 2;
                 players[i].status_bar.control = 1;
             }
