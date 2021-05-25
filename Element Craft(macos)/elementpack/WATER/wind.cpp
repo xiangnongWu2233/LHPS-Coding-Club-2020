@@ -37,7 +37,7 @@ void wind::cyclone()
     sleep(1);
     printf("%d %s + %d shield\n", user, players[user].name.c_str(), players[user].level);
     players[user].status_bar.shield += players[user].level;
-    players[user].gainExp(1);
+    sleep(1);
 }
 
 void wind::hurricane(int target)
@@ -49,7 +49,7 @@ void wind::hurricane(int target)
         players[players[target].last].receiveDamage(user, 2 * players[user].level);
     if (players[target].next != user)
         players[players[target].next].receiveDamage(user, 2 * players[user].level);
-    players[user].gainExp(1);
+    sleep(1);
 }
 
 void wind::stormrage(int target)
@@ -65,6 +65,5 @@ void wind::stormrage(int target)
         players[target].status_bar.inAir += 2;
         players[target].status_bar.control = 1;
     }
-    players[user].gainExp(1);
     sleep(1);
 }
