@@ -18,15 +18,15 @@ divine::divine() : light()
 void divine::skill(int target)
 {
     int coin = rand() % 100 + 1;
-    if (coin <= 30)
+    if (coin <= 10)
         normalAttack(target);
-    else if (coin > 30 && coin <= 60)
+    else if (coin > 10 && coin <= 30)
         divineGlory();
-    else if (coin > 60 && coin <= 80)
+    else if (coin > 30 && coin <= 70)
         judgement(target);
-    else if (coin > 80)
+    else if (coin > 70)
         justice(target);
-    if (coin > 30)
+    if (coin > 10)
         players[user].gainExp(1);
     if (courage > 0)
     {
@@ -47,7 +47,7 @@ void divine::divineGlory()
 void divine::judgement(int target)
 {
     printf("Judgement!\n");
-    players[target].receiveDamage(user, players[user].level + players[user].attack);
+    players[target].receiveDamage(user, players[user].level * 3 + players[user].attack);
     if (players[target].hp <= players[target].ele->hpMaximum[players[target].level] / 9)
     {
         players[target].receiveDamage(user, 999 + players[target].defense);

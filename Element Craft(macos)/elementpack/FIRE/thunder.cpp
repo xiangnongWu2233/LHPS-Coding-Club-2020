@@ -19,22 +19,22 @@ thunder::thunder() : fire()
 void thunder::skill(int target)
 {
     int coin = rand() % 100 + 1;
-    if (coin <= 20)
+    if (coin <= 10)
         normalAttack(target);
-    else if (coin > 20 && coin <= 50)
+    else if (coin > 10 && coin <= 50)
         thunderStrike(target);
     else if (coin > 50 && coin <= 80)
         ballLightning();
     else if (coin > 80)
         tremendousThunderbolt();
-    if (coin > 20)
+    if (coin > 10)
         players[user].gainExp(1);
 }
 
 void thunder::thunderStrike(int target)
 {
     printf("Thunder Strike!\n");
-    players[target].receiveDamage(user, players[user].attack + players[target].defense);
+    players[target].receiveDamage(user, players[user].attack + players[user].level + players[target].defense);
     if (players[target].status_bar.trial == 0 && players[target].status_bar.frozen == 0 && players[target].status_bar.terrified)
     {
         players[target].status_bar.inAir = 0;
@@ -58,6 +58,6 @@ void thunder::tremendousThunderbolt()
     sleep(2);
     for (int i = first, cnt = 1; cnt <= n - dn; i = players[i].next, cnt++)
         if (i != user)
-            players[i].receiveDamage(user, players[user].level * 2 + players[i].defense);
+            players[i].receiveDamage(user, players[user].level * 3 + players[i].defense);
     sleep(1);
 }

@@ -19,13 +19,18 @@ ghost::ghost() : dark()
 void ghost::skill(int target)
 {
     int coin = rand() % 100 + 1;
-    if (coin <= 30)
+    if (coin <= 10)
         normalAttack(target);
-    else if (coin > 30 && coin <= 50)
+    else if (coin > 10 && coin <= 30)
+    {
         terrify(target);
-    else if (coin > 50 && coin <= 80)
+        players[target].defense--;
+        players[user].ele->normalAttack(target);
+        players[target].defense++;
+    }
+    else if (coin > 30 && coin <= 70)
         drainSoul(target);
-    else if (coin > 80)
+    else if (coin > 70)
     {
         if (players[user].hp >= 5)
             mentalConfusion();
@@ -44,16 +49,13 @@ void ghost::terrify(int target)
         printf("%d %s was terrified!\n", target, players[target].name.c_str());
         players[target].status_bar.terrified++;
     }
-    players[target].defense--;
-    players[user].ele->normalAttack(target);
-    players[target].defense++;
     sleep(1);
 }
 
 void ghost::drainSoul(int target)
 {
     printf("Drain Soul!\n");
-    players[target].receiveDamage(user, players[user].level + players[user].attack);
+    players[target].receiveDamage(user, players[user].level * 2 + players[user].attack);
     players[user].restoreHP(players[user].level);
     sleep(1);
 }
@@ -66,7 +68,7 @@ void ghost::mentalConfusion()
     for (int i = first, cnt = 1; cnt <= n - dn; i = players[i].next, cnt++)
         if (i != user)
         {
-            players[i].receiveDamage(user, players[user].attack * 3);
+            players[i].receiveDamage(user, players[user].attack * 3 + players[user].level);
             terrify(i);
         }
     sleep(1);

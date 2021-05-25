@@ -19,17 +19,17 @@ poison::poison() : grass()
 void poison::skill(int target)
 {
     int coin = rand() % 100 + 1;
-    if (coin <= 50)
+    if (coin <= 40)
     {
         normalAttack(target);
         if (players[target].status_bar.poisoning[0] == 0)
             poisoning(target, 2, 2);
     }
-    else if (coin > 50 && coin <= 80)
+    else if (coin > 40 && coin <= 70)
         poisonGas(target);
-    else if (coin > 80)
+    else if (coin > 70)
         virusAttack(target);
-    if (coin > 50)
+    if (coin > 40)
         players[user].gainExp(1);
 }
 
@@ -47,16 +47,16 @@ void poison::poisonGas(int target)
 {
     printf("Poison Gas!\n");
     players[target].receiveDamage(user, players[user].attack + players[user].defense);
-    poisoning(target, 3, players[user].level);
+    poisoning(target, 3, players[user].level + players[user].attack);
     for (int i = players[target].last; i != user; i = players[i].last)
     {
         players[i].receiveDamage(user, players[user].attack);
-        poisoning(i, 3, players[user].level - 2);
+        poisoning(i, 3, players[user].level + players[user].attack - 2);
     }
     for (int i = players[target].next; i != user; i = players[i].next)
     {
         players[i].receiveDamage(user, players[user].attack);
-        poisoning(i, 3, players[user].level - 2);
+        poisoning(i, 3, players[user].level + players[user].attack - 2);
     }
     sleep(1);
 }
@@ -65,7 +65,7 @@ void poison::virusAttack(int target)
 {
     printf("Virus Attack!!!\n");
     sleep(2);
-    players[target].receiveDamage(user, players[target].status_bar.poisoning[0] * 5 + 3);
+    players[target].receiveDamage(user, players[target].status_bar.poisoning[0] * 5 + players[user].level * 2);
     players[user].restoreHP(players[target].status_bar.poisoning[0] * 3 + 1);
     if (players[target].hp <= 0)
         players[user].restoreHP(players[user].level * 2);

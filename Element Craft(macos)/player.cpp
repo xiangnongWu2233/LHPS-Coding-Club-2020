@@ -167,10 +167,10 @@ void player::upgrade()
             defense++;
         if (choice == "3")
             hpRestore++;
-        if (level >= 2 && ele->elementLevel == 1)
+        if (level >= 3 && ele->elementLevel == 1)
         {
             int coin = rand() % 100 + 1;
-            if (coin >= 1 - 10 * (level - 3))
+            if (coin >= 60 - 10 * (level - 3))
                 mutate();
         }
     }

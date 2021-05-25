@@ -18,7 +18,7 @@ spirit::spirit() : light()
 void spirit::skill(int target)
 {
     int coin = rand() % 100 + 1;
-    if (coin <= 40)
+    if (coin <= 20)
     {
         if (bless > 0)
         {
@@ -30,13 +30,13 @@ void spirit::skill(int target)
         else
             normalAttack(target);
     }
-    else if (coin > 40 && coin <= 60)
+    else if (coin > 20 && coin <= 50)
         soulFerry();
-    else if (coin > 60 && coin <= 80)
+    else if (coin > 50 && coin <= 70)
         angelBless();
-    else if (coin > 80)
+    else if (coin > 70)
         callFromsoul(target);
-    if (coin > 40)
+    if (coin > 20)
         players[user].gainExp(1);
 }
 
@@ -45,7 +45,7 @@ void spirit::soulFerry()
     printf("Soul Ferry!\n");
     for (int i = first, cnt = 1; cnt <= n - dn; i = players[i].next, cnt++)
         if (i != user)
-            players[i].receiveDamage(user, players[user].attack);
+            players[i].receiveDamage(user, players[user].attack + players[user].level);
     sleep(1);
 }
 

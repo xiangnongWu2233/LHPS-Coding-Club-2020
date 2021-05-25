@@ -19,9 +19,9 @@ demon::demon() : dark()
 void demon::skill(int target)
 {
     int coin = rand() % 100 + 1;
-    if (coin <= 30)
+    if (coin <= 10)
         normalAttack(target);
-    else if (coin > 30 && coin <= 50)
+    else if (coin > 10 && coin <= 50)
         blackSigil();
     else if (coin > 50 && coin <= 70)
     {
@@ -32,7 +32,7 @@ void demon::skill(int target)
     }
     else if (coin > 70)
         devour(target);
-    if (coin > 30)
+    if (coin > 10)
         players[user].gainExp(1);
 }
 
@@ -47,7 +47,7 @@ void demon::blackSigil()
 void demon::devour(int target)
 {
     printf("Devour!\n");
-    int damage = (players[target].ele->hpMaximum[players[target].level] - players[target].hp) * 0.1 + players[user].level * 2;
+    int damage = (players[target].ele->hpMaximum[players[target].level] - players[target].hp) * 0.1 + players[user].level * 3 + players[target].defense;
     players[target].receiveDamage(user, damage);
     sleep(1);
 }

@@ -19,11 +19,11 @@ ice::ice() : water()
 void ice::skill(int target)
 {
     int coin = rand() % 100 + 1;
-    if (coin <= 30)
+    if (coin <= 10)
         normalAttack(target);
-    else if (coin > 30 && coin <= 60)
+    else if (coin > 10 && coin <= 40)
         freeze(target, 1);
-    else if (coin > 60 && coin <= 80)
+    else if (coin > 40 && coin <= 70)
     {
         int t = 0;
         for (int i = first, cnt = 1; cnt <= n - dn; i = players[i].next, cnt++)
@@ -37,9 +37,9 @@ void ice::skill(int target)
         else
             freeze(target, 1);
     }
-    else if (coin > 80)
+    else if (coin > 70)
         glacier();
-    if (coin > 30)
+    if (coin > 10)
         players[user].gainExp(1);
 }
 

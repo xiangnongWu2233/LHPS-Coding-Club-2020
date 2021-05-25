@@ -19,11 +19,11 @@ wind::wind() : water()
 void wind::skill(int target)
 {
     int coin = rand() % 100 + 1;
-    if (coin <= 20)
+    if (coin <= 10)
         normalAttack(target);
-    else if (coin > 20 && coin <= 50)
+    else if (coin > 10 && coin <= 40)
         cyclone();
-    else if (coin > 50 && coin <= 70)
+    else if (coin > 40 && coin <= 70)
         stormrage(target);
     else if (coin > 70)
         hurricane(target);

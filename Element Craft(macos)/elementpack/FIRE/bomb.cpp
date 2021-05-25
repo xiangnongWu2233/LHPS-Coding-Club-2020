@@ -19,11 +19,11 @@ bomb::bomb() : fire()
 void bomb::skill(int target)
 {
     int coin = rand() % 100 + 1;
-    if (coin <= 20)
+    if (coin <= 10)
         normalAttack(target);
-    else if (coin > 20 && coin <= 60)
+    else if (coin > 10 && coin <= 50)
         missle(target);
-    else if (coin > 60 && coin <= 80)
+    else if (coin > 50 && coin <= 80)
     {
         if (missles == 3)
             nuclearStrike(target);
@@ -32,7 +32,7 @@ void bomb::skill(int target)
     }
     else if (coin > 80)
         devastate(target);
-    if (coin > 20)
+    if (coin > 10)
         players[user].gainExp(1);
 }
 
@@ -54,9 +54,9 @@ void bomb::missle(int target)
     {
         players[target].receiveDamage(user, players[user].level + 4);
         if (players[target].last != user)
-            players[players[target].last].receiveDamage(user, players[user].level + 2);
+            players[players[target].last].receiveDamage(user, players[user].level + players[user].attack);
         if (players[target].next != user)
-            players[players[target].next].receiveDamage(user, players[user].level + 2);
+            players[players[target].next].receiveDamage(user, players[user].level + players[user].attack);
     }
     else
         missles++;
@@ -71,7 +71,7 @@ void bomb::devastate(int target)
         players[target].receiveDamage(user, 999 + players[target].defense);
         return;
     }
-    players[target].receiveDamage(user, players[user].attack);
+    players[target].receiveDamage(user, players[user].attack * 2);
     sleep(1);
 }
 
@@ -79,11 +79,11 @@ void bomb::nuclearStrike(int target)
 {
     printf("Nuclear Strike!!!\n");
     sleep(2);
-    players[target].receiveDamage(user, players[user].attack * 2 + players[user].level);
+    players[target].receiveDamage(user, players[user].attack * 3 + players[user].level);
     if (players[target].last != user)
-        players[players[target].last].receiveDamage(user, players[user].attack * 2 + players[user].level - 5);
+        players[players[target].last].receiveDamage(user, players[user].attack * 3 + players[user].level - 5);
     if (players[target].next != user)
-        players[players[target].next].receiveDamage(user, players[user].attack * 2 + players[user].level - 5);
+        players[players[target].next].receiveDamage(user, players[user].attack * 3 + players[user].level - 5);
     missles = 0;
     sleep(1);
 }
